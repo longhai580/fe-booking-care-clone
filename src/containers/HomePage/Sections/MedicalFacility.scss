@@ -1,0 +1,21 @@
+.clinic-child{
+    border: 2px solid #f1f1f1;
+    border-radius: 16px;
+    padding: 10px 30px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng để phần tử nổi bật hơn */
+
+    padding: 5px;
+       .section-medical-facility{
+        padding-top: 10px;
+        background-size: contain; /* Điều chỉnh kích thước ảnh phù hợp với phần tử */
+        background-repeat: no-repeat; /* Đảm bảo ảnh không bị lặp lại */
+        background-position: center center; /* Canh giữa hình ảnh trong khung */
+        width: 150px !important; /* Điều chỉnh chiều rộng ảnh */
+        height: 150px !important; /* Điều chỉnh chiều cao ảnh */
+        margin: 0 auto; /* Căn giữa phần tử */
+       }
+    .clinic-name{
+
+    }
+}

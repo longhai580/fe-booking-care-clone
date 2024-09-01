@@ -1,0 +1,249 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+ // Nếu bạn dùng các biểu tượng dạng solid
+.slick-prev{
+    color: aqua;
+    left: -10px !important;
+    z-index: 2 !important;
+    height: 48px !important;
+    width: 44px !important;
+    
+    border-radius: 5px !important;
+    box-shadow: rgb(201, 236, 240) 2px 2px 5px !important;
+    background-color: rgb(255, 255, 255) !important;
+    border-color: rgb(181, 231, 237) !important;
+}
+.slick-prev:before, .slick-next:before
+{
+    content: "\e257"; // Ký tự cho icon mũi tên trái
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900; // Font weight cần thiết cho các biểu tượng solid
+    color:#35929e !important;
+    height: 48px !important;
+    width: 44px !important;
+    font-family: 'slick' !important;
+    font-size: 30px !important;
+    line-height: 1 !important;
+    opacity: .75 !important;
+    background-color:  white !important;
+    border-radius: 8px !important;
+
+}
+.slick-next{
+    background-color: blue !important;
+    right: -10px !important;
+    color: red !important;
+    height: 48px !important;
+    width: 44px !important;
+    border-radius: 5px !important;
+    box-shadow: rgb(201, 236, 240) 2px 2px 5px !important;
+    background-color: rgb(255, 255, 255) !important;
+    border-color: rgb(181, 231, 237) !important;
+
+}
+.slick-disabled{
+    display: none !important;
+}
+.section-share{
+    &.section-specialty{
+        margin-top: 50px !important;
+
+        // background-color: #f5f5f5;
+    }
+    &.section-about{
+        height: 500px !important;
+        margin-top: 30px !important;
+
+    }
+
+    .section-body{
+        // height: 150px;
+        .section-customize{
+            // border: 2px solid rgb(241, 241, 241);
+            // border-radius: 16px;
+            width: 380px !important;
+            height: 280px !important;
+            margin-left: 18px;
+            cursor: pointer;
+            .bg-image{
+                margin-left: 20px;
+                width: 278px;
+                height: 150px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin:  0 auto;
+
+
+                &.section-specialty{
+                  
+
+                    // background-image: url('../../assets/specialty/img2.png');
+                }
+                &.section-medical-facility{
+                    margin-top: 30px;
+                    // background-image: url('../../assets/medical-facility/bvcr.jpeg');
+
+                }
+                &.section-outstanding-doctor{
+                    // background-image: url('../../assets/doctor/bs-vi.jpeg');
+                    width: 120px;
+                    height: 120px;
+                    margin:  0 auto;
+                    border-radius: 50%;
+
+
+                }
+                &.section-handbook{
+                    background-image: url('../../assets/handbook/handbook1.png');
+
+                }
+                
+            }
+            .section-sub{
+                font-weight: 600;
+                font-size: 18px;
+                text-align: center;
+                padding-top: 25px;
+                margin: 5px 0;
+            }
+        }
+        
+
+    }
+}
+
+.section-share{
+    height: 330px;
+    .section-container{
+        margin: 0 100px;
+        display: flex;
+        flex-direction: column;
+        .section-header{
+          
+            height: 60px;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            .title-section{
+                font-size: 22px;
+                font-weight: 600;
+
+
+            }
+            .btn-section{
+                float: right;
+                background-color: #daf3f5;
+                border: none;
+                outline: none;
+                color: #35929e;
+                font-size: 22px;
+                font-weight: 500;
+                border-radius: 8px;
+                padding: 10px 15px;            }
+        }
+   
+    }
+    
+
+}
+
+
+.section-outstanding-doctor{
+    margin-top: 50px;
+    .outer-bg{
+        margin-bottom:10px;
+    }
+    .section-customize{
+        padding: 5px;
+        .customize-border{
+            border: 2px solid rgb(241, 241, 241);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+    }
+}
+
+.section-about{
+    background-image: url('../../assets/images/bg-section.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 ;
+    .section-about-header{
+        padding: 20px 0 20px 100px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+    .section-about-content{
+        display: flex;
+        gap: 15px;
+        width: 100%;
+        .content-left{
+            &.section-about-link{
+                padding-left: 100px;
+            }
+            width: 50%;
+            .link-ytb{
+                border-radius: 8px;
+            }
+        }
+        .content-right{
+            margin-top: 50px !important;
+            margin-left: 20px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            .section-about-news{
+                padding: 10px 0;
+                display: flex;
+                .news-left{
+                    background-color: white;
+                    padding: 10px 80px;
+                    border-radius: 8px;
+                    img{
+                        font: 24px;
+                    }
+                    .news-item{
+                        // background-image: url('../../assets/about/vtv1.png');
+                    }
+                }
+                .news-right{
+                   
+                    background-color: white;
+                    padding: 10px 50px;
+                    border-radius: 8px;
+                    margin-left: 20px;
+                    span{
+                        min-width: 200px;
+
+                        padding: 10px 30px;
+
+                        img{
+                            font: 24px;
+                        }
+                    }
+                    
+                    .news-item{
+                        // background-image: url('../../assets/about/vtv1.png');
+                    }
+                }
+            }
+        }
+
+    }
+}
+.section-handbook{
+    margin-bottom: 100px;
+}
+.section-handbook-container{
+    padding: 5px;
+    border: 2px solid rgb(241, 241, 241);
+    border-radius: 16px;
+    padding: 30px;
+}
+.home-footer{
+    padding-top: 20px;
+    a{
+        text-decoration: none;
+    }
+}

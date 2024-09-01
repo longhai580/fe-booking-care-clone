@@ -1,0 +1,248 @@
+.footer-container{
+    background-color: #FFFFFF !important;
+    height: 300px;
+    width: 100%;
+    z-index: 1000;
+    margin-top: 30px;
+
+    .footer-body-row {
+        height: 100%;
+        width: 100%;
+        .footer-support {
+            display: flex;
+            padding: 10px 20px;
+
+            .support-container{
+                text-align: left;
+                .footer-support-content{
+                    margin: 0;
+                    text-align: left;
+                    .support_{
+                    list-style: none;    
+                    margin: 0;
+                    padding: 0;
+                    display: block !important;   
+                    color: rgba(0, 0, 0, .65);   
+                    .support-item-icon{
+                       margin-right: 10px;
+                    }    
+                    .support-item-link{
+                      text-decoration: none;
+                      font-weight: 500;
+                      color: #46c2d2;
+                    }      
+}
+                }
+                .footer-support-title{
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin-bottom: 20px;
+                    cursor: pointer;
+                }
+                &.about-shop{
+                    margin-left: 30px;
+                }
+            }
+        } 
+        .footer-contact{
+            padding: 10px 20px;
+            display: flex;
+            .contact-container{
+                &.pay-method{
+                    margin-left: 40px;
+                    .pay-content{
+                        margin-top: 10px;
+                        .app-pay-item{
+                            display: flex;
+                            &.app-jcb{
+                                margin-top: 10px;
+                            }
+                            .pay-icon{
+                                background-color: #fff;
+                                border-radius: 2px;
+                                box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+                                height: 32px;
+                                width: 67px;
+                                &.icon-second{
+                                    margin-left: 15px;
+                                  
+                                }
+                            }
+                        }
+                    }
+                }
+                .contact-title{
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    font-weight: 500;
+                }
+                .contact-content{
+                    margin-top: 15px;
+                    .contact-item{
+                        margin-top: 5px;
+                        .contact-icon{
+                            .icon-contact{
+                                color: #45c3d3;
+                                font-size: 20px;
+                            }
+                            icon{
+                                color: aqua;
+                            }
+                        }
+                        .contact-name{
+                            margin-left: 10px;
+                            color: rgba(0, 0, 0, .65);             
+
+                        }
+                    }
+                }
+            }
+        }
+        .app-footer{
+            padding: 10px 30px;
+
+            .footer-app-title{
+                text-transform: uppercase;
+                font-size: 20px;
+                font-weight: 500;
+                width: 80%;
+
+            }
+            .footer-app-content{
+                display: flex;
+                padding-top: 10px;
+                .app-qr{
+                    width: 120px;
+                    span{
+                        img{
+                            width: 90px;
+                            background-color: #fff;
+                            border-radius: 2px;
+                            box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+                        
+                        }
+                    }
+                }
+                .app-link{
+                    .app-link-item{
+                        &.app-gg{
+                            margin-top: 8px;
+
+                        }
+                        &.app-gala{
+                            margin-top: 8px;
+                        }
+                        .app-link-icon{
+                            
+                            img{
+                                height: 20px;
+                                background-color: #fff;
+                                border-radius: 2px;
+                                box-shadow: 0 2px 2px rgba(0, 0, 0, .2);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .footer-end{
+            background-color: #FBFBFB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(0, 0, 0, .65);             
+
+        }
+    
+    }
+    
+   
+}
+@media only screen and (max-width: 46.1875em) {
+    .footer-body-row {
+        display: flex;
+    //   flex-direction: column;
+    text-align: center;
+    justify-content: center;
+      margin: 0;
+      width: 100%;
+      .footer-support {
+        display: none !important;
+        padding: 10px 10px !important;
+      }
+      .footer-contact {
+        width: 100%;
+        padding-left: 20px;
+        .pay-method {
+          display: none;
+        }
+        .contact-title {
+          white-space: nowrap;
+        }
+        .contact-container {
+          width: 100%;
+          .contact-item {
+            width: 100%;
+            // display: flex;
+            .contact-icon {
+              width: 30px;
+            }
+            .contact-name {
+              flex: 1;
+            }
+          }
+        }
+      }
+      .app-footer {
+        padding-left: 20px;
+        width: 100%;
+        
+        .footer-app-title {
+          white-space: nowrap;
+          margin-left: 40px;
+        
+        }
+        .footer-app-content {
+        //   flex-direction: column;
+        justify-content: center;
+          align-items: center;
+          .app-qr {
+            // width: 100%;
+            span {
+              display: flex;
+              justify-content: center;
+              img {
+                width: 90px;
+              }
+            }
+          }
+          .app-link {
+            .app-link-item {
+              display: flex;
+              justify-content: center;
+              .app-link-icon {
+                img {
+                  height: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Tablet: width >= 740px and width < 1024px
+  @media screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+    .menu {
+      display: none !important;
+    }
+  }
+
+  // PC: width >= 1024px
+  @media only screen and (min-width: 64em) {
+    .menu {
+      display: block !important;
+    }
+  }

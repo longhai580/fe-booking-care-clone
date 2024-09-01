@@ -1,0 +1,11 @@
+.modal-header{
+    .btn-close-modal{
+        outline: none;
+        border: none;
+        background-color: white !important;
+    }
+}
+.modal .modal-dialog .modal-content .modal-header {
+    background-color: white;
+    color: black;
+}
