@@ -118,7 +118,7 @@ class HomeFooter extends Component {
        
                 <div className='col-4 app-footer '>
                     <div className="footer-app-title">
-                        Tải ứng dụng SkyShop 
+                        Tải ứng dụng BookingCare
                     </div>
                     <div className="footer-app-content">
                         <div className="app-qr">
