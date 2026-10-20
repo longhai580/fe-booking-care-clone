@@ -216,9 +216,9 @@ class UserRedux extends Component {
         return (
             <div className="user-redux-container">
                 <div className="title">
-                User Redux
+                    <FormattedMessage id="menu.admin.crud-redux" />
                 </div>
-                <div>{ isLoadingGender === true  ? 'Loading genders' : ''}</div>
+                {isLoadingGender === true && <div className="spinner-border spinner-border-sm text-info"></div>}
                 <div className="user-redux-body" >
                     <div className='container'>
                         <form className="row g-3">

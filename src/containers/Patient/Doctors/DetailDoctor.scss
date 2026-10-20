@@ -1,83 +1,102 @@
-.doctor-detail-container{
-    height: 500px;
-    .intro-doctor{
+.bc-breadcrumb-light {
+    font-size: 13px;
+    color: var(--bc-text-muted);
+    margin-bottom: 16px;
+    a {
+        color: var(--bc-text-muted);
+        &:hover {
+            color: var(--bc-primary);
+        }
+    }
+    span {
+        margin: 0 6px;
+    }
+}
+
+.doctor-detail-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    > .bc-breadcrumb-light {
+        margin-bottom: -4px;
+    }
+    .doctor-intro {
         display: flex;
-        padding: 0 100px;
-        .content-left{
-            width   : 20%;
-            border:  1px solid #46c2d2;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position:  center;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 10px 20px;
-            
-            
+        gap: 28px;
+        padding: 28px;
+        align-items: flex-start;
+        .doctor-avatar {
+            width: 140px;
+            height: 140px;
+            font-size: 48px;
         }
-        .content-right{
-            padding-left: 10px;
-            width: 80%;
-            display: flex;
+        .doctor-intro-content {
+            flex: 1;
+            min-width: 0;
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            margin: 4px 0 8px;
+            letter-spacing: -0.01em;
+        }
+        .doctor-location {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            color: var(--bc-primary-dark);
+            background: var(--bc-primary-soft);
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+        }
+        .doctor-description {
+            color: var(--bc-text-muted);
+            line-height: 1.7;
+            white-space: pre-line;
+            margin: 0;
+        }
+        @media (max-width: 640px) {
             flex-direction: column;
-            .up{
-                padding-top: 15px;
-                font-size: 20px;
-                font-weight: 600;
-            }
-            .down{
-                padding-top: 10px ;
-                .like-share-plugin{
-                    margin: 10px 0 20px 0;
-                }
+            align-items: center;
+            text-align: center;
+            padding: 22px;
+            .doctor-avatar {
+                width: 112px;
+                height: 112px;
             }
         }
     }
-    .schedule-doctor{
-        padding: 0 100px;
-
-        margin: 0 50px ;
-        display:  flex;
-        padding: 10px 0;
-        min-height: 200px;
-        .content-left-schedule{
-            width: 50%;
-            padding-left: 60px;
+    .doctor-booking {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+        gap: 28px;
+        padding: 24px 28px;
+        .booking-right {
+            border-left: 1px solid var(--bc-border);
+            padding-left: 28px;
+        }
+        @media (max-width: 860px) {
+            grid-template-columns: minmax(0, 1fr);
+            padding: 20px;
+            .booking-right {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid var(--bc-border);
+                padding-top: 18px;
+            }
         }
     }
-    .detail-infor-doctor{
-        padding-top: 20px;
-        background-color: #F9F9F9;
-        padding-left: 10px;
-        margin-bottom: 20px;
-        padding-left: 100px;
-        padding-right: 100px;
-        h1,h2,h3{
-            font-size: 17px;
-
+    .doctor-about {
+        padding: 28px;
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
         }
-        img{
-            width: 100%;
-        }
-    }
-    .comment-fb{
-        // min-height: 100px;
-        // z-index: 10000;
-    }
-    .comment-doctor{
-        padding: 10px 100px;
-        height: 50px;
-        background-color: #006e6f;
-        width: 100% !important;
-        color: white;
-        span{
-            cursor: pointer;
-        }
-        .see-detail-ques{
-            margin-left: 10px;
-            font-weight: 600;
-            color: yellow;
+        @media (max-width: 640px) {
+            padding: 20px;
         }
     }
 }

@@ -1,97 +1,40 @@
 export const adminMenu = [
-    { //Quản lý người dùng 
-        name: 'menu.admin.manage-user',
+    {
+        name: 'menu.admin.overview',
         menus: [
-            {
-                name: 'menu.admin.crud', link: '/system/user-manage'
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                // ]
-            },
-            {
-                name: 'menu.admin.crud-redux', link: '/system/user-redux'
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                // ]
-            },
-            {
-                name: 'menu.admin.manage-doctor', link: '/system/manage-doctor'
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                // ]
-            },
-            {
-                name: 'menu.admin.manage-admin', link: '/system/user-admin'
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                // ]
-            },
-            { //Quản lý kế hoạch khám bệnh của bác sĩ 
-               
-                        name: 'menu.doctor.schedule', link: '/doctor/manage-schedule'
-                 
-            },
-           
+            { name: 'menu.admin.dashboard', link: '/system/dashboard', icon: 'fas fa-chart-pie' },
         ]
     },
-    { //Quản lý phòng khám 
-        name: 'menu.admin.clinic',
-        menus: [
-            {
-                name: 'menu.admin.manage-clinic', link: '/system/manage-clinic'
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                // ]
-            }
-        ]
-    }
-    ,
-    { //Quản lý chuyên khoa 
-        name: 'menu.admin.specialty',
-        menus: [
-            {
-                name: 'menu.admin.manage-specialty', link: '/system/manage-specialty'
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                // ]
-            }
-        ]
-    },
-    { //Quản lý cẩm nang 
-        name: 'menu.admin.handbook',
-        menus: [
-            {
-                name: 'menu.admin.manage-handbook', link: '/system/manage-handbook'
-                // subMenus: [
-                //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
-                //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
-                // ]
-            },
-            
-        ]
-    }
-];
-export const doctorMenu = [
     {
         name: 'menu.admin.manage-user',
         menus: [
-    
-            { //Quản lý kế hoạch khám bệnh của bác sĩ 
-           
-                name: 'menu.doctor.schedule', link: '/doctor/manage-schedule'
-            },
-            { //Quản lý bệnh nhân khám bệnh của bác sĩ 
-           
-                name: 'menu.doctor.manage-patient', link: '/doctor/manage-patient'
-            }
+            { name: 'menu.admin.crud', link: '/system/user-manage', icon: 'fas fa-users' },
+            { name: 'menu.admin.crud-redux', link: '/system/user-redux', icon: 'fas fa-user-plus' },
+        ]
+    },
+    {
+        name: 'menu.admin.doctor-group',
+        menus: [
+            { name: 'menu.admin.manage-doctor', link: '/system/manage-doctor', icon: 'fas fa-user-md' },
+            { name: 'menu.doctor.schedule', link: '/doctor/manage-schedule', icon: 'far fa-calendar-alt' },
+        ]
+    },
+    {
+        name: 'menu.admin.content',
+        menus: [
+            { name: 'menu.admin.manage-specialty', link: '/system/manage-specialty', icon: 'fas fa-stethoscope' },
+            { name: 'menu.admin.manage-clinic', link: '/system/manage-clinic', icon: 'far fa-hospital' },
+            { name: 'menu.admin.manage-handbook', link: '/system/manage-handbook', icon: 'far fa-newspaper' },
+        ]
+    },
+];
+
+export const doctorMenu = [
+    {
+        name: 'menu.doctor.header',
+        menus: [
+            { name: 'menu.doctor.schedule', link: '/doctor/manage-schedule', icon: 'far fa-calendar-alt' },
+            { name: 'menu.doctor.manage-patient', link: '/doctor/manage-patient', icon: 'fas fa-user-injured' },
         ]
     }
-    
-   
 ];

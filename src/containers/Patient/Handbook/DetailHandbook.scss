@@ -1,0 +1,67 @@
+.handbook-detail {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
+    @media (max-width: 991px) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .handbook-article {
+        padding: 32px;
+        @media (max-width: 600px) {
+            padding: 20px;
+        }
+    }
+    .handbook-meta {
+        color: var(--bc-text-muted);
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    .handbook-lead {
+        font-size: 17px;
+        font-weight: 500;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .handbook-cover {
+        width: 100%;
+        border-radius: var(--bc-radius-sm);
+        margin-bottom: 24px;
+        max-height: 420px;
+        object-fit: cover;
+    }
+    .handbook-aside {
+        position: sticky;
+        top: calc(var(--bc-header-h) + 20px);
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .aside-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px;
+            border-radius: var(--bc-radius-sm);
+            color: var(--bc-text);
+            &:hover {
+                background: #fff;
+                box-shadow: var(--bc-shadow);
+            }
+        }
+        .aside-thumb {
+            flex-shrink: 0;
+            width: 88px;
+            height: 60px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--bc-primary-soft);
+        }
+        .aside-title {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+    }
+}

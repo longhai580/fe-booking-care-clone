@@ -1,56 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Specialty.scss'
-import { FormattedMessage } from 'react-intl';
-import Slider from "react-slick";
-
+import { withRouter } from 'react-router';
+import { getAllHandbook } from '../../../services/userService';
+import SectionHeader from './SectionHeader';
+import HandbookCard from '../../Patient/Handbook/HandbookCard';
 
 class HandBook extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            handbooks: [],
+        }
+    }
 
-    
+    async componentDidMount() {
+        let res = await getAllHandbook(3);
+        if (res && res.errCode === 0) {
+            this.setState({ handbooks: res.data || [] });
+        }
+    }
 
     render() {
-        
+        let { handbooks } = this.state;
+        if (handbooks.length === 0) return null;
         return (
-            <div className='section-share section-handbook'>
-                <div className="section-container">
-                    <div className="section-header">
-                        <span className="title-section">Cẩm nang</span>
-                        <button className="btn-section">Xem thêm</button>
-
-                    </div>
-                    <div className="section-body">
-
-                    <Slider {...this.props.settings}>
-                        <div className="section-customize section-handbook-container">
-                            <div className="bg-image section-handbook"> </div>
-                            <div className="section-sub">Cẩm nang 1</div>
-                        </div>
-                        <div className="section-customize section-handbook-container">
-                        <div className="bg-image section-handbook"> </div>
-                                <div className="section-sub">Cẩm nang 2</div>
-                        </div>
-                         <div className="section-customize section-handbook-container">
-                         <div className="bg-image section-handbook"> </div>
-                                <div className="section-sub" >Cẩm nang 3</div>
-                        </div>
-                        <div className="section-customize section-handbook-container ">
-                        <div className="bg-image section-handbook"> </div>
-                                <div className="section-sub" >Cẩm nang 4</div>
-                        </div>
-                        <div className="section-customize section-handbook-container">
-                        <div className="bg-image section-handbook"> </div>
-                            <div className="section-sub" >Cẩm nang 5</div>
-                        </div>
-                        <div className="section-customizesection-handbook-container ">
-                        <div className="bg-image section-handbook"> </div>
-                            <div className="section-sub" >Cẩm nang 6</div>
-                        </div>
-           
-                    </Slider>
+            <section className="bc-section bc-section-soft section-handbook">
+                <div className="bc-container">
+                    <SectionHeader titleId="home.handbook-title" subId="home.handbook-sub" link="/handbooks" />
+                    <div className="bc-grid bc-grid-3">
+                        {handbooks.map(item => <HandbookCard key={item.id} item={item} />)}
                     </div>
                 </div>
-            </div>
+            </section>
         );
     }
 
@@ -58,16 +39,8 @@ class HandBook extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-       
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(HandBook);
+export default withRouter(connect(mapStateToProps)(HandBook));

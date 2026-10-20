@@ -1,0 +1,48 @@
+.doctor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    padding: 24px 16px 18px;
+    background: #fff;
+    border: 1px solid var(--bc-border);
+    border-radius: var(--bc-radius);
+    color: var(--bc-text);
+    transition: box-shadow .2s ease, transform .2s ease;
+    .bc-avatar {
+        width: 112px;
+        height: 112px;
+        margin-bottom: 14px;
+    }
+    .doctor-card-name {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+    .doctor-card-specialty {
+        margin-top: 6px;
+        font-size: 13px;
+        color: var(--bc-text-muted);
+        i {
+            color: var(--bc-primary);
+            margin-right: 2px;
+        }
+    }
+    .doctor-card-cta {
+        margin-top: auto;
+        padding-top: 14px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bc-primary);
+        opacity: .85;
+    }
+    &:hover {
+        color: var(--bc-text);
+        box-shadow: var(--bc-shadow-hover);
+        transform: translateY(-3px);
+        .doctor-card-cta {
+            opacity: 1;
+        }
+    }
+}

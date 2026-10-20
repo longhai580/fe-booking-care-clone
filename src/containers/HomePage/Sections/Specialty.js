@@ -1,76 +1,58 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Specialty.scss'
-import { FormattedMessage } from 'react-intl';
 import Slider from "react-slick";
-import {getAllSpecialty} from '../../../services/userService'
 import { withRouter } from 'react-router';
+import { getAllSpecialty } from '../../../services/userService'
+import SectionHeader from './SectionHeader';
+import './Specialty.scss'
 
 class Specialty extends Component {
-    constructor(props) { 
+    constructor(props) {
         super(props);
         this.state = {
-            dataSpecialty: []
+            dataSpecialty: [],
+            isLoading: true,
         }
     }
 
-    async componentDidMount(){
+    async componentDidMount() {
         let res = await getAllSpecialty();
-        console.log('check specialty from node js ', res)
-        if (res && res.errCode === 0) {
-
-            this.setState({
-                dataSpecialty: res.data ? res.data : []
-            })
-        }
+        this.setState({
+            dataSpecialty: res && res.errCode === 0 && res.data ? res.data : [],
+            isLoading: false,
+        })
     }
+
     handleViewDetailSpecialty = (item) => {
         if (this.props.history) {
             this.props.history.push(`/detail-specialty/${item.id}`);
         }
     }
+
     render() {
-        let { dataSpecialty } = this.state;
+        let { dataSpecialty, isLoading } = this.state;
         return (
-            <div className='section-share section-specialty'>
-                   <div className="section-container">
-                        <div className="section-header">
-                        <span className="title-section">
-                            <FormattedMessage id="homepage.specialty-popular" />
-                            </span>
-                        <button className="btn-section">
-                        <FormattedMessage id="homepage.more-info" />
-
-                            </button>
-                        </div>
-                   
-                   <div className="section-body">
-                        <Slider {...this.props.settings}>
-                            {dataSpecialty && dataSpecialty.length > 0
-                            && dataSpecialty.map((item, index) =>{
-                                return (
-                                    <div className="section-customize specialty-child"
-                                        key={index}
-                                        onClick={() => this.handleViewDetailSpecialty(item)}
-                                    
-                                    >
-                                        <div className="bg-image section-specialty"
-                                            style={{ backgroundImage: `url(${item.image})` }}
-
-                                        > </div>
-                                        <div className="section-sub">{item.name}</div>
+            <section className="bc-section section-specialty">
+                <div className="bc-container">
+                    <SectionHeader titleId="homepage.specialty-popular" subId="home.specialty-sub" link="/specialties" />
+                    {isLoading ? (
+                        <div className="bc-grid">{[1, 2, 3, 4].map(i => <div key={i} className="bc-skeleton" style={{ height: 210 }}></div>)}</div>
+                    ) : (
+                        <Slider {...this.props.settings} className="bc-slider">
+                            {dataSpecialty.map((item) => (
+                                <div key={item.id}>
+                                    <div className="bc-tile" onClick={() => this.handleViewDetailSpecialty(item)}>
+                                        <div className="bc-tile-img" style={{ backgroundImage: `url(${item.image})` }}></div>
+                                        <div className="bc-tile-body">
+                                            <h3 className="bc-tile-title">{item.name}</h3>
+                                        </div>
                                     </div>
-                            
-                                )
-                            })
-                
-                            }
+                                </div>
+                            ))}
                         </Slider>
-                    </div>
+                    )}
                 </div>
-            </div>
-             
-        
+            </section>
         );
     }
 
@@ -78,16 +60,8 @@ class Specialty extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-       
-    };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Specialty));
+export default withRouter(connect(mapStateToProps)(Specialty));

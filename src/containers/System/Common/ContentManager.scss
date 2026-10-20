@@ -1,0 +1,65 @@
+.content-manager {
+    .editing-name {
+        color: var(--bc-primary);
+    }
+    .cm-form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 20px;
+        @media (max-width: 760px) {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+    .cm-textarea {
+        height: auto;
+        padding: 10px 14px;
+        resize: vertical;
+    }
+    .cm-image-label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        .required {
+            color: var(--bc-danger);
+            margin-left: 2px;
+        }
+    }
+    .cm-image-drop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 16 / 10;
+        border: 2px dashed var(--bc-border);
+        border-radius: var(--bc-radius-sm);
+        background-color: var(--bc-bg-soft);
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        color: var(--bc-text-muted);
+        font-size: 13px;
+        text-align: center;
+        transition: border-color .15s ease;
+        &:hover {
+            border-color: var(--bc-primary);
+        }
+        span {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            i {
+                font-size: 24px;
+                color: var(--bc-primary);
+            }
+        }
+    }
+    .cm-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 4px;
+    }
+    tr.is-editing td {
+        background: var(--bc-primary-soft) !important;
+    }
+}

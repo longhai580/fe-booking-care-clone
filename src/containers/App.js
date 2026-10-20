@@ -1,25 +1,27 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { history } from '../redux'
-import { ToastContainer, toast } from 'react-toastify';
-import CustomScrollbars from '../components/CustomScrollbars'
+import { ToastContainer } from 'react-toastify';
 import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
 import { path } from '../utils';
 import Home from '../routes/Home';
-// import Login from '../routes/Login';
 import Login from './Auth/Login';
-import Header from './Header/Header';
 import System from '../routes/System';
 import HomePage from './HomePage/HomePage';
-import { CustomToastCloseButton } from '../components/CustomToast';
-import ConfirmModal from '../components/ConfirmModal';
 import DetailDoctor from './Patient/Doctors/DetailDoctor';
 import Doctor from '../routes/Doctor';
-import VerifyEmail from'./Patient/VerifyEmail';
+import VerifyEmail from './Patient/VerifyEmail';
 import DetailSpecialty from './Patient/Specialty/DetailSpecialty';
 import DetailClinic from './Patient/Clinic/DetailClinic';
+import DetailHandbook from './Patient/Handbook/DetailHandbook';
+import ListSpecialty from './Patient/List/ListSpecialty';
+import ListClinic from './Patient/List/ListClinic';
+import ListDoctor from './Patient/List/ListDoctor';
+import ListHandbook from './Patient/List/ListHandbook';
+import MyBookings from './Patient/MyBookings/MyBookings';
+
 class App extends Component {
 
     handlePersistorState = () => {
@@ -38,6 +40,16 @@ class App extends Component {
 
     componentDidMount() {
         this.handlePersistorState();
+        // scroll to top when navigating to another page
+        this.unlisten = history.listen((location, action) => {
+            if (action !== 'POP') {
+                window.scrollTo(0, 0);
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        if (this.unlisten) this.unlisten();
     }
 
     render() {
@@ -45,11 +57,7 @@ class App extends Component {
             <Fragment>
                 <Router history={history}>
                     <div className="main-container">
-                        {/* <ConfirmModal /> */}
-                        {/* {this.props.isLoggedIn && <Header />} */}
-
                         <div className="content-container">
-                            <CustomScrollbars style={{height: '100vh', width: '100%'}}>
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />
                                 <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
@@ -57,35 +65,32 @@ class App extends Component {
                                 <Route path={'/doctor'} component={userIsAuthenticated(Doctor)} />
 
                                 <Route path={path.HOMEPAGE} component={HomePage} />
-                                <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} /> 
-                                <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} /> 
-                                <Route path={path.DETAIL_CLINIC} component={DetailClinic} /> 
+                                <Route path={path.DETAIL_DOCTOR} component={DetailDoctor} />
+                                <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
+                                <Route path={path.DETAIL_CLINIC} component={DetailClinic} />
+                                <Route path={path.DETAIL_HANDBOOK} component={DetailHandbook} />
+                                <Route path={path.LIST_SPECIALTY} component={ListSpecialty} />
+                                <Route path={path.LIST_CLINIC} component={ListClinic} />
+                                <Route path={path.LIST_DOCTOR} component={ListDoctor} />
+                                <Route path={path.LIST_HANDBOOK} component={ListHandbook} />
+                                <Route path={path.MY_BOOKINGS} component={MyBookings} />
 
-                                <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail}/> 
-
-
-                                </Switch>
-                            </CustomScrollbars>
+                                <Route path={path.VERIFY_EMAIL_BOOKING} component={VerifyEmail} />
+                                <Route render={() => <Redirect to={path.HOMEPAGE} />} />
+                            </Switch>
                         </div>
 
-                        {/* <ToastContainer
-                            className="toast-container" toastClassName="toast-item" bodyClassName="toast-item-body"
-                            autoClose={false} hideProgressBar={true} pauseOnHover={false}
-                            pauseOnFocusLoss={true} closeOnClick={false} draggable={false}
-                            closeButton={<CustomToastCloseButton />}
-                        /> */}
                         <ToastContainer
-                        position="top-right"
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-       />
-
+                            position="top-right"
+                            autoClose={4000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                     </div>
                 </Router>
             </Fragment>

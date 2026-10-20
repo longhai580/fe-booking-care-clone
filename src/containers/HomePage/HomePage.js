@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import HomeHeader from './HomeHeader';
 import Specialty from './Sections/Specialty';
@@ -8,35 +7,23 @@ import OutStandingDoctor from './Sections/OutStandingDoctor';
 import HandBook from './Sections/HandBook';
 import About from './Sections/About';
 import HomeFooter from './HomeFooter';
+import { buildSliderSettings } from '../../components/Common/SliderArrow';
 
 import './HomePage.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 class HomePage extends Component {
 
     render() {
-        let settings = {
-            dots: false,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 1
-          };
+        let settings = buildSliderSettings(4);
         return (
-            <div>
-                <HomeHeader isShowBanner = {true} />
-                <Specialty
-                    settings = {settings}
-                />
-                <MedicalFacility
-                    settings = {settings}
-                />
-                <OutStandingDoctor
-                    settings = {settings}
-                />
-                <HandBook
-                    settings = {settings}
-                />
+            <div className="home-page">
+                <HomeHeader isShowBanner={true} />
+                <Specialty settings={settings} />
+                <MedicalFacility settings={settings} />
+                <OutStandingDoctor settings={settings} />
+                <HandBook />
                 <About />
                 <HomeFooter />
             </div>

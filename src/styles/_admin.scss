@@ -1,0 +1,197 @@
+/*
+ * Restyle legacy admin screens (user CRUD, doctor info, schedule) to match the new admin layout.
+ */
+.admin-content {
+    .users-container,
+    .user-redux-container,
+    .manage-doctor-container,
+    .manage-schedule-container {
+        background: #fff;
+        border: 1px solid var(--bc-border);
+        border-radius: var(--bc-radius);
+        padding: 24px;
+        margin: 0 0 20px;
+        max-width: none;
+    }
+
+    .title,
+    .manage-doctor-title,
+    .m-s-title {
+        text-align: left !important;
+        text-transform: none !important;
+        font-size: 22px !important;
+        font-weight: 800 !important;
+        color: var(--bc-text) !important;
+        margin: 0 0 20px !important;
+        letter-spacing: -0.01em;
+    }
+
+    label,
+    .form-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bc-text);
+        margin-bottom: 6px;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 42px;
+        border: 1px solid var(--bc-border);
+        border-radius: var(--bc-radius-sm);
+        font-family: inherit;
+        font-size: 14px;
+        &:focus {
+            border-color: var(--bc-primary);
+            box-shadow: 0 0 0 3px rgba(11, 138, 143, .15);
+        }
+    }
+    textarea.form-control {
+        min-height: 110px;
+    }
+
+    .btn {
+        height: auto;
+        line-height: 1.2;
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .btn-primary,
+    .btn-save-schedule,
+    .create-content-doctor,
+    .save-content-doctor {
+        background: var(--bc-primary) !important;
+        border-color: var(--bc-primary) !important;
+        color: #fff !important;
+        &:hover {
+            background: var(--bc-primary-dark) !important;
+        }
+    }
+    .btn-warning {
+        background: var(--bc-accent) !important;
+        border-color: var(--bc-accent) !important;
+        color: #3b2a00 !important;
+    }
+
+    /* user tables */
+    .user-table {
+        overflow-x: auto;
+        margin-top: 16px;
+    }
+    #customers {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 14px;
+        border: 1px solid var(--bc-border);
+        border-radius: var(--bc-radius-sm);
+        overflow: hidden;
+        th {
+            background: var(--bc-bg-soft) !important;
+            color: var(--bc-text-muted) !important;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            padding: 12px !important;
+            border: none !important;
+            border-bottom: 1px solid var(--bc-border) !important;
+            text-align: left;
+        }
+        td {
+            padding: 12px !important;
+            border: none !important;
+            border-bottom: 1px solid var(--bc-border) !important;
+        }
+        tr:nth-child(even) {
+            background: transparent !important;
+        }
+        tr:hover td {
+            background: #fafcfc !important;
+        }
+        tr:last-child td {
+            border-bottom: none !important;
+        }
+    }
+    .btn-edit,
+    .btn-delete {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: none;
+        margin-right: 6px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn-edit {
+        background: var(--bc-primary-soft) !important;
+        color: var(--bc-primary-dark) !important;
+        i { color: var(--bc-primary-dark) !important; }
+    }
+    .btn-delete {
+        background: var(--bc-danger-soft) !important;
+        color: var(--bc-danger) !important;
+        i { color: var(--bc-danger) !important; }
+    }
+
+    /* user redux avatar upload */
+    .label-upload {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: var(--bc-primary-soft);
+        color: var(--bc-primary-dark);
+        cursor: pointer;
+    }
+    .preview-image {
+        border-radius: var(--bc-radius-sm);
+        border: 1px solid var(--bc-border);
+    }
+
+    /* schedule picker */
+    .manage-schedule-container {
+        .pick-hour-container {
+            padding: 8px 0 !important;
+            gap: 10px !important;
+            .btn-schedule {
+                min-width: 130px;
+                padding: 10px 14px !important;
+                border-radius: var(--bc-radius-sm) !important;
+                border: 1px solid var(--bc-border) !important;
+                background: #fff;
+                color: var(--bc-text);
+                font-weight: 600;
+                &:hover {
+                    border-color: var(--bc-primary) !important;
+                }
+                &.active {
+                    background: var(--bc-primary) !important;
+                    border-color: var(--bc-primary) !important;
+                    color: #fff !important;
+                }
+            }
+        }
+        .btn-save-schedule {
+            margin-top: 16px;
+            padding: 10px 22px !important;
+        }
+    }
+
+    .manage-doctor-container {
+        .more-infor,
+        .more-infor-extra {
+            margin-bottom: 16px;
+        }
+        .manage-doctor-editor {
+            margin-top: 8px;
+            border-radius: var(--bc-radius-sm);
+            overflow: hidden;
+        }
+    }
+}

@@ -1,29 +1,26 @@
 {
-    "homeheader":{
+    "homeheader": {
         "speciality": "Chuyên khoa",
         "searchdoctor": "Tìm bác sĩ theo chuyên khoa",
-        "health-facility":"Cơ sở y tế",
+        "health-facility": "Cơ sở y tế",
         "select-room": "Chọn bệnh viện phòng khám",
         "doctor": "Bác sĩ",
-        "select-doctor":"Chọn bác sĩ giỏi",
+        "select-doctor": "Chọn bác sĩ giỏi",
         "fee": "Gói khám",
-        "check-health":"Khám sức khoẻ tổng quát",
+        "check-health": "Khám sức khoẻ tổng quát",
         "booking-date": "Lịch hẹn",
-        "support":"Hỗ trợ",
+        "support": "Hỗ trợ",
         "welcome": "Xin chào, "
-
-
     },
-    "banner":{
-        "title1":"NỀN TẢNG Y TẾ",
-        "title2" :"CHĂM SÓC SỨC KHOẺ TOÀN DIỆN",
-        "speciality":"Khám chuyên khoa",
+    "banner": {
+        "title1": "NỀN TẢNG Y TẾ",
+        "title2": "CHĂM SÓC SỨC KHOẺ TOÀN DIỆN",
+        "speciality": "Khám chuyên khoa",
         "remote": "Khám từ xa",
         "general": "Khám tổng quát",
         "test": "Xét nghiệm y học",
-        "mental":"Sức khoẻ tinh thần",
-        "dentistry" : "Khám nha khoa"
-
+        "mental": "Sức khoẻ tinh thần",
+        "dentistry": "Khám nha khoa"
     },
     "menu": {
         "system": {
@@ -39,26 +36,30 @@
             }
         },
         "admin": {
-            "manage-user":"Người dùng",
-            "manage-doctor":"Quản lý bác sĩ",
+            "manage-user": "Người dùng",
+            "manage-doctor": "Thông tin bác sĩ",
             "manage-admin": "Quản lý admin",
-            "crud": "CRUD user",
-            "crud-redux": "CRUD Redux",
+            "crud": "Danh sách người dùng",
+            "crud-redux": "Thêm / sửa người dùng",
             "clinic": "Phòng khám",
-            "manage-clinic":"Quản lý phòng khám",
-            "specialty" : " Chuyên khoa ",
-            "manage-specialty" : "Quản lý chuyên khoa",
+            "manage-clinic": "Phòng khám",
+            "specialty": " Chuyên khoa ",
+            "manage-specialty": "Chuyên khoa",
             "handbook": "Cẩm nang",
-            "manage-handbook": "Quản lý cẩm nang"
-
+            "manage-handbook": "Cẩm nang",
+            "overview": "Tổng quan",
+            "dashboard": "Bảng điều khiển",
+            "doctor-group": "Bác sĩ",
+            "content": "Nội dung"
         },
-        "doctor":{
-            "schedule": "Quản lý kế hoạch khám bệnh ",
-            "manage-patient": "Quản lý bệnh nhân khám bệnh",
+        "doctor": {
+            "schedule": "Kế hoạch khám bệnh",
+            "manage-patient": "Bệnh nhân",
             "patient-profile": "Thông tin bệnh nhân",
             "patient-history": "Lịch sử khám bệnh",
             "patient-medical-history": "Lịch sử điều trị bệnh",
-            "patient-examination-history": "Lịch sử xét nghiệm"
+            "patient-examination-history": "Lịch sử xét nghiệm",
+            "header": "Bác sĩ"
         }
     },
     "manage-user": {
@@ -66,7 +67,7 @@
         "email": "Email",
         "password": "Mật khẩu",
         "first-name": "Tên",
-        "last-name" : "Họ",
+        "last-name": "Họ",
         "address": "Địa chỉ",
         "phone-number": "Số điện thoại",
         "gender": "Giới tính",
@@ -77,38 +78,35 @@
         "image": "Ảnh đại diện",
         "save": "Lưu người dùng",
         "edit": "Lưu thay đổi"
-     
-
     },
     "homepage": {
-        "outstanding-doctor":"Bác sĩ nổi bật ",
+        "outstanding-doctor": "Bác sĩ nổi bật ",
         "more-info": "Xem thêm",
         "specialty-popular": "Chuyên khoa phổ biến"
     },
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh của bác sĩ",
-        "choose-doctor" : "Chọn bác sĩ",
+        "choose-doctor": "Chọn bác sĩ",
         "choose-date": "Chọn ngày",
         "save": "Lưu thông tin"
-
     },
-    "patient":{
-        "detail-doctor":{
+    "patient": {
+        "detail-doctor": {
             "schedule": "Lịch khám",
-            "no-schedule": "Bác sĩ không có lịch hẹn trong thời gian này, vui lòng chọn thời gian khác!",
+            "no-schedule": "Bác sĩ không có lịch khám trong ngày này, vui lòng chọn ngày khác!",
             "choose": "Chọn ",
-            "book-free": " và đặt (miễn phí)"
-           
+            "book-free": " và đặt (miễn phí)",
+            "slot-full": "Hết chỗ"
         },
-        "extra-infor-doctor":{
-             "text-address": "Địa chỉ khám",
-             "price": "Giá khám",
-             "detail": "Xem chi tiết",
-             "hide": "Ẩn bảng giá",
-             "payment": "Người bệnh có thể thanh toán chi phí bằng hình thức: "
+        "extra-infor-doctor": {
+            "text-address": "Địa chỉ khám",
+            "price": "Giá khám",
+            "detail": "Xem chi tiết",
+            "hide": "Ẩn bảng giá",
+            "payment": "Người bệnh có thể thanh toán chi phí bằng hình thức: "
         },
-        "booking-modal":{
-            "title":"Thông tin đặt lịch khám bệnh",
+        "booking-modal": {
+            "title": "Thông tin đặt lịch khám bệnh",
             "fullName": "Họ và tên",
             "address": "Địa chỉ liên hệ",
             "email": "Địa chỉ Email",
@@ -118,12 +116,22 @@
             "gender": "Giới tính",
             "confirm": "Xác nhận",
             "cancel": "Hủy",
-            "freeBooking":"Miễn phí đặt lịch",
-            "priceBooking": "Giá khám: "
+            "freeBooking": "Miễn phí đặt lịch",
+            "priceBooking": "Giá khám: ",
+            "required": "Vui lòng nhập trường này",
+            "invalid-email": "Email không hợp lệ",
+            "invalid-phone": "Số điện thoại không hợp lệ",
+            "success": "Đặt lịch thành công! Vui lòng kiểm tra email để xác nhận.",
+            "success-no-email": "Đặt lịch thành công! Hệ thống chưa cấu hình email, bấm liên kết bên dưới để xác nhận.",
+            "verify-now": "Xác nhận lịch hẹn ngay",
+            "error": "Đặt lịch thất bại, vui lòng thử lại!",
+            "duplicated": "Bạn đã đặt khung giờ này rồi!",
+            "full": "Khung giờ này đã kín lịch, vui lòng chọn giờ khác!",
+            "note": "Thông tin của bạn chỉ dùng để xác nhận lịch hẹn và được bảo mật."
         }
     },
-    "admin":{
-        "manage-doctor":{
+    "admin": {
+        "manage-doctor": {
             "title": "Tạo thêm thông tin bác sĩ",
             "select-doctor": "Chọn bác sĩ",
             "intro": "Thông tin giới thiệu",
@@ -138,5 +146,208 @@
             "specialty": "Chọn chuyên khoa",
             "clinic": "Chọn phòng khám"
         }
+    },
+    "nav": {
+        "specialty": "Chuyên khoa",
+        "clinic": "Cơ sở y tế",
+        "doctor": "Bác sĩ",
+        "handbook": "Cẩm nang",
+        "my-bookings": "Lịch hẹn của tôi",
+        "login": "Đăng nhập",
+        "dashboard": "Trang quản trị",
+        "logout": "Đăng xuất",
+        "home": "Trang chủ"
+    },
+    "hero": {
+        "badge": "Đặt lịch khám nhanh chóng, miễn phí",
+        "title": "Đặt lịch khám với bác sĩ giỏi",
+        "title-highlight": "chỉ trong 1 phút",
+        "desc": "Hơn 100 bác sĩ, chuyên khoa và cơ sở y tế uy tín. Chọn giờ phù hợp, nhận xác nhận qua email.",
+        "search-placeholder": "Tìm bác sĩ, chuyên khoa, cơ sở y tế...",
+        "search-empty": "Không tìm thấy kết quả phù hợp",
+        "stat-doctors": "Bác sĩ",
+        "stat-specialties": "Chuyên khoa",
+        "stat-clinics": "Cơ sở y tế"
+    },
+    "search": {
+        "doctors": "Bác sĩ",
+        "specialties": "Chuyên khoa",
+        "clinics": "Cơ sở y tế",
+        "handbooks": "Cẩm nang",
+        "searching": "Đang tìm..."
+    },
+    "home": {
+        "specialty-sub": "Tìm bác sĩ theo chuyên khoa bạn cần",
+        "clinic-title": "Cơ sở y tế nổi bật",
+        "clinic-sub": "Bệnh viện, phòng khám uy tín trên toàn quốc",
+        "doctor-sub": "Bác sĩ giàu kinh nghiệm, được nhiều bệnh nhân tin tưởng",
+        "handbook-title": "Cẩm nang sức khoẻ",
+        "handbook-sub": "Kiến thức y khoa hữu ích từ đội ngũ bác sĩ",
+        "why-title": "Vì sao chọn BookingCare?",
+        "why-1-title": "Bác sĩ uy tín",
+        "why-1-desc": "Đội ngũ bác sĩ, chuyên gia đầu ngành được xác thực thông tin rõ ràng.",
+        "why-2-title": "Đặt lịch 24/7",
+        "why-2-desc": "Chủ động chọn ngày giờ phù hợp, không cần xếp hàng chờ đợi.",
+        "why-3-title": "Xác nhận qua email",
+        "why-3-desc": "Nhận thông tin lịch hẹn và kết quả khám trực tiếp qua email.",
+        "why-4-title": "Miễn phí đặt lịch",
+        "why-4-desc": "Không mất phí đặt lịch, thanh toán trực tiếp tại cơ sở khám.",
+        "steps-title": "Đặt lịch khám chỉ với 3 bước",
+        "step-1": "Chọn bác sĩ hoặc chuyên khoa",
+        "step-2": "Chọn ngày giờ khám phù hợp",
+        "step-3": "Điền thông tin & xác nhận qua email",
+        "press": "Truyền thông nói về BookingCare",
+        "view-all": "Xem tất cả"
+    },
+    "footer": {
+        "about": "Nền tảng đặt lịch khám bệnh trực tuyến, kết nối bệnh nhân với bác sĩ và cơ sở y tế uy tín.",
+        "links": "Khám phá",
+        "support": "Hỗ trợ",
+        "contact": "Liên hệ",
+        "faq": "Câu hỏi thường gặp",
+        "policy": "Chính sách bảo mật",
+        "terms": "Điều khoản sử dụng",
+        "download": "Tải ứng dụng",
+        "copyright": "Bản quyền thuộc về BookingCare Clone."
+    },
+    "list": {
+        "specialty-title": "Chuyên khoa",
+        "specialty-desc": "Danh sách chuyên khoa khám bệnh. Chọn chuyên khoa để xem bác sĩ và đặt lịch.",
+        "clinic-title": "Cơ sở y tế",
+        "clinic-desc": "Bệnh viện, phòng khám, trung tâm xét nghiệm uy tín.",
+        "doctor-title": "Bác sĩ",
+        "doctor-desc": "Tìm bác sĩ theo tên, chuyên khoa và khu vực.",
+        "handbook-title": "Cẩm nang sức khoẻ",
+        "handbook-desc": "Bài viết kiến thức y khoa dễ hiểu, hữu ích cho bạn và gia đình.",
+        "search-placeholder": "Tìm theo tên...",
+        "all-specialty": "Tất cả chuyên khoa",
+        "all-province": "Toàn quốc",
+        "result": "kết quả",
+        "empty": "Chưa có dữ liệu phù hợp",
+        "view-detail": "Xem chi tiết",
+        "book-now": "Đặt lịch khám"
+    },
+    "detail": {
+        "doctors-of-specialty": "Bác sĩ chuyên khoa",
+        "doctors-of-clinic": "Bác sĩ tại cơ sở",
+        "no-doctor": "Chưa có bác sĩ nào",
+        "introduce": "Giới thiệu",
+        "read-more": "Xem thêm",
+        "collapse": "Thu gọn",
+        "related-handbook": "Bài viết khác",
+        "about-doctor": "Thông tin bác sĩ",
+        "faq-title": "Cần tìm hiểu thêm?",
+        "faq-link": "Xem câu hỏi thường gặp"
+    },
+    "my-bookings": {
+        "title": "Tra cứu lịch hẹn",
+        "desc": "Nhập email bạn đã dùng khi đặt lịch để xem trạng thái các lịch hẹn.",
+        "email": "Email đặt lịch",
+        "search": "Tra cứu",
+        "empty": "Không tìm thấy lịch hẹn nào với email này",
+        "doctor": "Bác sĩ",
+        "time": "Thời gian",
+        "status": "Trạng thái",
+        "note-S1": "Vui lòng kiểm tra email và bấm vào liên kết để xác nhận lịch hẹn.",
+        "invalid-email": "Email không hợp lệ"
+    },
+    "verify": {
+        "loading": "Đang xác nhận lịch hẹn...",
+        "success-title": "Xác nhận lịch hẹn thành công!",
+        "success-desc": "Lịch khám của bạn đã được xác nhận. Vui lòng đến đúng giờ và mang theo giấy tờ tuỳ thân.",
+        "fail-title": "Không thể xác nhận lịch hẹn",
+        "fail-desc": "Lịch hẹn không tồn tại hoặc đã được xác nhận trước đó.",
+        "back-home": "Về trang chủ",
+        "view-bookings": "Xem lịch hẹn"
+    },
+    "admin-layout": {
+        "view-site": "Xem trang web",
+        "logout": "Đăng xuất",
+        "welcome": "Xin chào"
+    },
+    "dashboard": {
+        "title": "Bảng điều khiển",
+        "subtitle": "Tổng quan hoạt động của hệ thống",
+        "doctors": "Bác sĩ",
+        "patients": "Bệnh nhân",
+        "specialties": "Chuyên khoa",
+        "clinics": "Cơ sở y tế",
+        "handbooks": "Bài cẩm nang",
+        "bookings": "Lịch hẹn theo trạng thái",
+        "quick-actions": "Thao tác nhanh",
+        "add-user": "Thêm người dùng",
+        "add-doctor-info": "Cập nhật thông tin bác sĩ",
+        "add-schedule": "Tạo lịch khám",
+        "add-handbook": "Viết cẩm nang"
+    },
+    "login": {
+        "title": "Đăng nhập hệ thống",
+        "subtitle": "Dành cho quản trị viên và bác sĩ",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "email-placeholder": "Nhập email",
+        "password-placeholder": "Nhập mật khẩu",
+        "submit": "Đăng nhập",
+        "back-home": "Về trang chủ",
+        "empty": "Vui lòng nhập email và mật khẩu",
+        "patient-not-allowed": "Tài khoản bệnh nhân không có quyền truy cập trang quản trị",
+        "side-title": "Quản lý phòng khám dễ dàng hơn",
+        "side-desc": "Quản lý lịch khám, bệnh nhân, chuyên khoa và cơ sở y tế trên một nền tảng duy nhất."
+    },
+    "manage": {
+        "list": "Danh sách",
+        "add-new": "Thêm mới",
+        "edit": "Sửa",
+        "delete": "Xoá",
+        "save": "Lưu",
+        "update": "Cập nhật",
+        "cancel": "Huỷ",
+        "confirm-delete": "Bạn có chắc muốn xoá mục này?",
+        "name": "Tên",
+        "address": "Địa chỉ",
+        "image": "Ảnh",
+        "title": "Tiêu đề",
+        "description": "Mô tả ngắn",
+        "content": "Nội dung",
+        "choose-image": "Chọn ảnh",
+        "required": "Vui lòng nhập đầy đủ thông tin và chọn ảnh",
+        "saved": "Lưu thành công!",
+        "deleted": "Đã xoá!",
+        "error": "Có lỗi xảy ra, vui lòng thử lại",
+        "empty": "Chưa có dữ liệu",
+        "specialty-title": "Quản lý chuyên khoa",
+        "clinic-title": "Quản lý phòng khám",
+        "handbook-title": "Quản lý cẩm nang",
+        "editing": "Đang sửa",
+        "actions": "Thao tác",
+        "view": "Xem"
+    },
+    "manage-patient": {
+        "title": "Quản lý bệnh nhân",
+        "date": "Ngày khám",
+        "status": "Trạng thái",
+        "all": "Tất cả",
+        "time": "Thời gian",
+        "name": "Họ và tên",
+        "phone": "Số điện thoại",
+        "address": "Địa chỉ",
+        "gender": "Giới tính",
+        "actions": "Thao tác",
+        "confirm": "Gửi kết quả",
+        "cancel": "Huỷ lịch",
+        "confirm-cancel": "Huỷ lịch hẹn này?",
+        "cancelled": "Đã huỷ lịch hẹn",
+        "empty": "Không có bệnh nhân nào trong ngày này",
+        "send-success": "Đã gửi kết quả khám",
+        "send-error": "Gửi kết quả thất bại"
+    },
+    "remedy": {
+        "title": "Gửi kết quả khám",
+        "patient": "Bệnh nhân",
+        "email": "Email bệnh nhân",
+        "file": "Hoá đơn / đơn thuốc (ảnh)",
+        "send": "Gửi",
+        "cancel": "Huỷ",
+        "hint": "Lịch hẹn sẽ được chuyển sang trạng thái \"Đã khám xong\"."
     }
 }

@@ -1,168 +1,100 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { LANGUAGES } from '../../../utils';
-import './ProfileDoctor.scss';
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import {getProfileDoctorById} from '../../../services/userService'
-import NumberFormat from 'react-number-format';
 import _ from 'lodash';
 import moment from 'moment';
-import localization from 'moment/locale/vi';
-import {Link} from 'react-router-dom'
+import 'moment/locale/vi';
+import { LANGUAGES, buildDoctorName, formatPrice } from '../../../utils';
+import { getProfileDoctorById } from '../../../services/userService'
+import './ProfileDoctor.scss';
+
 class ProfileDoctor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-           dataProfile: {},
+            dataProfile: {},
         }
     }
-    async componentDidMount() {
-        let data = await this.getInforDoctor(this.props.doctorId);
-        this.setState({
-            dataProfile: data,
-        })
-    }
-    getInforDoctor = async (id) => {
-        let result = {};
-        if (id) {
-            let res = await getProfileDoctorById(id);
-            if (res && res.errCode === 0) {
-                result = res.data;
-            }
-        }
-        return result;
-        
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.language !== prevProps.language) {
-            
-        }
-        if (this.props.doctorId !== prevProps.doctorId) { 
-            this.getInforDoctor(this.props.doctorId)
-        }
-    }
-    renderTimeBooking = (dataTime) => {
-        console.log('check dataTime profile: ', dataTime);
-        let { language } = this.props;
 
-        
+    componentDidMount() {
+        this.loadData();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.doctorId !== prevProps.doctorId) {
+            this.loadData();
+        }
+    }
+
+    loadData = async () => {
+        let { doctorId } = this.props;
+        if (!doctorId) return;
+        let res = await getProfileDoctorById(doctorId);
+        if (res && res.errCode === 0) {
+            this.setState({ dataProfile: res.data || {} });
+            if (this.props.onLoaded) this.props.onLoaded(res.data);
+        }
+    }
+
+    renderTimeBooking = (dataTime) => {
+        let { language } = this.props;
         if (dataTime && !_.isEmpty(dataTime)) {
             let time = language === LANGUAGES.VI ? dataTime.timeTypeData.valueVi : dataTime.timeTypeData.valueEn;
             let date = language === LANGUAGES.VI ?
-                moment.unix(+dataTime.date/1000).format('dddd - DD/MM/YYYY')
-                : moment.unix(+dataTime.date/1000).locale('en').format('ddd - MM/DD/YYYY');
+                moment(+dataTime.date).locale('vi').format('dddd - DD/MM/YYYY')
+                : moment(+dataTime.date).locale('en').format('ddd - MM/DD/YYYY');
             return (
-                <>
-                    <div> {time} - {date} </div>
-                    <div>
-                    <FormattedMessage id="patient.booking-modal.freeBooking" />
-
-                    </div>
-                </>
+                <div className="profile-time">
+                    <div className="profile-time-main"><i className="far fa-clock"></i> {time} · <span className="text-capitalize">{date}</span></div>
+                    <div className="profile-free"><i className="fas fa-check-circle"></i> <FormattedMessage id="patient.booking-modal.freeBooking" /></div>
+                </div>
             )
         }
-        return <></>
-        
+        return null;
     }
+
     render() {
         let { dataProfile } = this.state;
-
-        let { language, isShowDescriptionDoctor,
-            dataTime, isShowLinkDetail, isShowPrice,
-            doctorId
-        
-        } = this.props;
-        let nameVi = '', nameEn = '';
-        if (dataProfile && dataProfile.positionData) {
-             nameVi = `${dataProfile.positionData.valueVi}, ${dataProfile.lastName} ${dataProfile.firstName} `;
-             nameEn = `${dataProfile.positionData.valueEn}, ${dataProfile.firstName} ${dataProfile.lastName}`;
-        }        
+        let { language, isShowDescriptionDoctor, dataTime, isShowLinkDetail, isShowPrice, doctorId } = this.props;
+        let name = dataProfile && dataProfile.positionData ? buildDoctorName(dataProfile, language) : '';
+        let infor = dataProfile.Doctor_Infor;
         return (
             <div className="profile-doctor-container">
-                <div className='intro-doctor'>
-                <div className="content-left img-doctor"
-                    style={{ backgroundImage: `url(${dataProfile && dataProfile.image ? dataProfile.image : ''})` }}>
+                <div className="profile-intro">
+                    <div className="bc-avatar" style={dataProfile.image ? { backgroundImage: `url(${dataProfile.image})` } : {}}>
+                        {!dataProfile.image && <i className="fas fa-user-md"></i>}
+                    </div>
+                    <div className="profile-content">
+                        <div className="profile-name">{name || <span className="bc-skeleton" style={{ display: 'block', height: 20, width: 220 }}></span>}</div>
+                        {isShowDescriptionDoctor === true
+                            ? (dataProfile.Markdown && dataProfile.Markdown.description && (
+                                <div className="profile-desc">{dataProfile.Markdown.description}</div>
+                            ))
+                            : this.renderTimeBooking(dataTime)
+                        }
+                        {isShowLinkDetail === true && (
+                            <Link className="profile-link" to={`/detail-doctor/${doctorId}`}>
+                                <FormattedMessage id="detail.read-more" /> <i className="fas fa-arrow-right"></i>
+                            </Link>
+                        )}
+                    </div>
                 </div>
-                <div className="content-right">
-                    <div className='up'>
-                        {language === LANGUAGES.VI ? nameVi : nameEn} 
-                    </div>
-                        <div className='down'>
-                            {isShowDescriptionDoctor === true ?
-                                <>
-                                    {dataProfile && dataProfile.Markdown && dataProfile.Markdown.description
-                                        && <span>
-                                            {dataProfile.Markdown.description}
-                                        </span>
-                                
-                                    }
-                                </>
-                                 :
-                                <>
-                                    {this.renderTimeBooking(dataTime)}
-                                 </>
-                            }
-                           
-                    </div>
-                    </div>
-                  
-                </div>
-                {isShowLinkDetail === true &&
-                    <div className="view-detail-doctor"
-                    >
-                        <Link
-                            className="view-detail-link"
-                            to={`/detail-doctor/${doctorId}`}>
-                           Xem thêm 
-                        </Link>
-                    </div>}
-                {isShowPrice === true &&
-                    <div className="price">
-
+                {isShowPrice === true && infor && infor.priceTypeData && (
+                    <div className="profile-price">
                         <FormattedMessage id="patient.booking-modal.priceBooking" />
-
-                            {dataProfile && dataProfile.Doctor_Infor
-                            && language === LANGUAGES.VI ?
-                            <NumberFormat 
-                                className='currency'
-                                value={dataProfile.Doctor_Infor.priceTypeData.valueVi                            }
-                                displayType={'text'}
-                                thousandSeparator={true}
-                                suffix='VND'
-                                /> 
-                            
-                            : ''}
-
-                            {dataProfile && dataProfile.Doctor_Infor
-                            && language === LANGUAGES.EN ?
-                            <NumberFormat 
-                                className='currency'
-                                value={dataProfile.Doctor_Infor.priceTypeData.valueEn                            }
-                                displayType={'text'}
-                                thousandSeparator={true}
-                                suffix='$'
-                            />
-                            : ''}
-
-                        </div>
-                }
-                    
+                        <strong>{formatPrice(infor.priceTypeData, language)}</strong>
+                    </div>
+                )}
             </div>
-          
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language, 
-
+        language: state.app.language,
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileDoctor);
+export default connect(mapStateToProps)(ProfileDoctor);

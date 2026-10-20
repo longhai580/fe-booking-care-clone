@@ -8,83 +8,56 @@ import vnexpress from '../../../assets/about/vnexpress.png'
 import infonet from '../../../assets/about/infonet.png'
 import dantri from '../../../assets/about/dantri.png'
 import vtcnews from '../../../assets/about/vtcnews.png'
+import './About.scss';
+
+const REASONS = [
+    { icon: 'fas fa-user-check', id: 1 },
+    { icon: 'far fa-clock', id: 2 },
+    { icon: 'far fa-envelope', id: 3 },
+    { icon: 'fas fa-hand-holding-heart', id: 4 },
+];
+
+const PRESS = [vtv1, vnexpress, dantri, ictnews, infonet, vtcnews, cntt];
 
 class About extends Component {
 
-    
-
     render() {
-        
         return (
-            <div className='section-share section-about'>
-                <div className="section-about-header">
-                    Truyền thông nói về Booking Care
-                </div>
-                <div className="section-about-content">
-                    <div className="content-left section-about-link">
-                        <iframe width="100%" height="387"
-                        className="link-ytb"
-                            src="https://www.youtube.com/embed/zoEtcR5EW08?list=RDSLpU2LGv54g" title="SƠN TÙNG M-TP | CHÚNG TA CỦA TƯƠNG LAI | OFFICIAL MUSIC VIDEO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                    </div>
-                    <div className="content-right">
-                        <div className="section-about-news">
-                            <div className="news-left">
-                                <span className="news-item">
-                                <img src={vtv1} style={{ width: '135px', height: '40px' }}/>
-
-                                </span>
-                            </div>
-                            <div className="news-right">
-    
-                            <span className="news-item"></span>
-                            <img src={cntt} style={{ width: '135px', height: '40px' }}/>
-
-                            </div>
+            <section className="bc-section section-about">
+                <div className="bc-container">
+                    <div className="about-why">
+                        <h2 className="bc-section-title text-center"><FormattedMessage id="home.why-title" /></h2>
+                        <div className="why-grid">
+                            {REASONS.map(item => (
+                                <div className="why-item" key={item.id}>
+                                    <span className="why-icon"><i className={item.icon}></i></span>
+                                    <h3><FormattedMessage id={`home.why-${item.id}-title`} /></h3>
+                                    <p><FormattedMessage id={`home.why-${item.id}-desc`} /></p>
+                                </div>
+                            ))}
                         </div>
-                        <div className="section-about-news">
-                            <div className="news-left">
-                                <span className="news-item">
-                                <img src={ictnews} style={{ width: '135px', height: '40px' }}/>
+                    </div>
 
-                                </span>
-                            </div>
-                            <div className="news-right">
-    
-                            <span className="news-item"></span>
-                            <img src={vnexpress} style={{ width: '135px', height: '40px' }}/>
+                    <div className="about-steps">
+                        <h2 className="bc-section-title"><FormattedMessage id="home.steps-title" /></h2>
+                        <ol className="steps">
+                            {[1, 2, 3].map(step => (
+                                <li key={step}>
+                                    <span className="step-number">{step}</span>
+                                    <span><FormattedMessage id={`home.step-${step}`} /></span>
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
 
-                            </div>
-                        </div>
-                        <div className="section-about-news">
-                            <div className="news-left">
-                                <span className="news-item">
-                                <img src={infonet} style={{ width: '135px', height: '40px' }}/>
-
-                                </span>
-                            </div>
-                            <div className="news-right">
-    
-                            <span className="news-item"></span>
-                            <img src={dantri} style={{ width: '135px', height: '40px' }}/>
-
-                            </div>
-                        </div>
-                        <div className="section-about-news">
-                            <div className="news-left">
-                                <span className="news-item">
-                                <img src={vtv1} style={{ width: '135px', height: '40px' }}/>
-
-                                </span>
-                            </div>
-                            <div className="news-right">
-    
-                            <span className="news-item"></span>
-                            <img src={vtcnews} style={{ width: '135px', height: '40px' }}/>
-
-                            </div>
+                    <div className="about-press">
+                        <div className="press-title"><FormattedMessage id="home.press" /></div>
+                        <div className="press-logos">
+                            {PRESS.map((logo, index) => <img key={index} src={logo} alt="" />)}
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         );
     }
 
@@ -92,16 +65,8 @@ class About extends Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-       
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(About);
+export default connect(mapStateToProps)(About);

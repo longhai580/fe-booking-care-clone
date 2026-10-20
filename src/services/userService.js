@@ -99,7 +99,7 @@ const getAllDetailClinicById = (data) => {
 }
 
 const getAllPatientForDoctor = (data) => {
-    return axios.get(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`);
+    return axios.get(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}&statusId=${data.statusId || 'S2'}`);
 
 }
 
@@ -108,7 +108,61 @@ const postSendRemedy = (data) => {
     return axios.post('/api/send-remedy', data);
 
 }
+const editSpecialty = (data) => {
+    return axios.put('/api/edit-specialty', data);
+}
+const deleteSpecialty = (id) => {
+    return axios.delete('/api/delete-specialty', { data: { id } });
+}
+const editClinic = (data) => {
+    return axios.put('/api/edit-clinic', data);
+}
+const deleteClinic = (id) => {
+    return axios.delete('/api/delete-clinic', { data: { id } });
+}
+
+// Handbook
+const createNewHandbook = (data) => {
+    return axios.post('/api/create-new-handbook', data);
+}
+const getAllHandbook = (limit) => {
+    return axios.get(`/api/get-handbook${limit ? `?limit=${limit}` : ''}`);
+}
+const getDetailHandbookById = (id) => {
+    return axios.get(`/api/get-detail-handbook-by-id?id=${id}`);
+}
+const editHandbook = (data) => {
+    return axios.put('/api/edit-handbook', data);
+}
+const deleteHandbook = (id) => {
+    return axios.delete('/api/delete-handbook', { data: { id } });
+}
+
+// Site
+const searchAll = (keyword) => {
+    return axios.get(`/api/search?q=${encodeURIComponent(keyword)}`);
+}
+const getListDoctors = (filter = {}) => {
+    let params = new URLSearchParams();
+    Object.keys(filter).forEach(key => {
+        if (filter[key]) params.append(key, filter[key]);
+    });
+    return axios.get(`/api/get-list-doctors?${params.toString()}`);
+}
+const getStatistics = () => {
+    return axios.get('/api/statistics');
+}
+const getPatientBookings = (email) => {
+    return axios.get(`/api/patient-bookings?email=${encodeURIComponent(email)}`);
+}
+const cancelBooking = (data) => {
+    return axios.post('/api/cancel-booking', data);
+}
+
 export {
+    editSpecialty, deleteSpecialty, editClinic, deleteClinic,
+    createNewHandbook, getAllHandbook, getDetailHandbookById, editHandbook, deleteHandbook,
+    searchAll, getListDoctors, getStatistics, getPatientBookings, cancelBooking,
     handleLoginApi, getAllUsers,
     createNewUserService, deleteUserService,
     editUserService, getAllCodeService,

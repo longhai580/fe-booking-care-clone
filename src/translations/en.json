@@ -1,31 +1,26 @@
 {
-    "homeheader":{
+    "homeheader": {
         "speciality": "Medical specialty",
         "searchdoctor": "Find a doctor by specialty",
-        "health-facility":"health facilities",
+        "health-facility": "health facilities",
         "select-room": "Choose a hospital or clinic",
         "doctor": "Doctor",
-        "select-doctor":"Choose a good doctor",
+        "select-doctor": "Choose a good doctor",
         "fee": "Examination package",
-        "check-health":"General health examination",
+        "check-health": "General health examination",
         "booking-date": "Appointment schedule",
-        "support":"Support",
+        "support": "Support",
         "welcome": "Welcome, "
-
-
-
-
     },
-    "banner":{
-        "title1":"MEDICAL PLATFORM",
-        "title2" :"COMPREHENSIVE HEALTH CARE",
-        "speciality":" Specialized examination",
+    "banner": {
+        "title1": "MEDICAL PLATFORM",
+        "title2": "COMPREHENSIVE HEALTH CARE",
+        "speciality": " Specialized examination",
         "remote": "Remote medical examination",
         "general": "Physical exam",
         "test": "Medical tests",
-        "mental":"mental health",
-        "dentistry" : "Dental examination"
-
+        "mental": "mental health",
+        "dentistry": "Dental examination"
     },
     "menu": {
         "system": {
@@ -41,22 +36,27 @@
             }
         },
         "admin": {
-            "manage-user":"Manage user",
-            "manage-doctor":"Manage doctor",
+            "manage-user": "Manage user",
+            "manage-doctor": "Doctor profiles",
             "manage-admin": "Manage admin",
-            "crud": "CRUD user",
-            "crud-redux": "CRUD Redux",
+            "crud": "Users",
+            "crud-redux": "Add / edit user",
             "clinic": "Clinics",
-            "manage-clinic":"Manage clinics",
-            "specialty" : "Specialties",
-            "manage-specialty" : "Manage specialties",
+            "manage-clinic": "Clinics",
+            "specialty": "Specialties",
+            "manage-specialty": "Specialties",
             "handbook": "Handbook",
-            "manage-handbook": "Manage handbook"
+            "manage-handbook": "Handbook",
+            "overview": "Overview",
+            "dashboard": "Dashboard",
+            "doctor-group": "Doctors",
+            "content": "Content"
         },
-        "doctor":{
-            "schedule": "Manage Doctor's schedule ",
-            "manage-patient": "Manage patients",
-            "patient-profile": "Patient profile"
+        "doctor": {
+            "schedule": "Schedules",
+            "manage-patient": "Patients",
+            "patient-profile": "Patient profile",
+            "header": "Doctor"
         }
     },
     "manage-user": {
@@ -64,7 +64,7 @@
         "email": "Email",
         "password": "Password",
         "first-name": "FirstName",
-        "last-name" : "LastName",
+        "last-name": "LastName",
         "address": "Address",
         "phone-number": "Phone number",
         "gender": "Gender",
@@ -74,39 +74,36 @@
         "position": "Position",
         "image": "Avatar",
         "save": "Save user",
-        "edit":"Edit user"
-     
-
+        "edit": "Edit user"
     },
     "homepage": {
-        "outstanding-doctor":"Outstanding doctor ",
+        "outstanding-doctor": "Outstanding doctor ",
         "more-info": "More infor",
         "specialty-popular": "Popular specialties"
-
-    } ,
+    },
     "manage-schedule": {
         "title": "Manage doctor's examination plan",
-        "choose-doctor" : "Choose doctor",
+        "choose-doctor": "Choose doctor",
         "choose-date": "Choose date",
         "save": "Save Infor"
-
     },
-    "patient":{
-        "detail-doctor":{
+    "patient": {
+        "detail-doctor": {
             "schedule": "Schedule",
-            "no-schedule": "The doctor does not have appointments during this time, please choose another time!",
-              "choose": "Choose ",
-            "book-free": " and book (free)"
-           
+            "no-schedule": "The doctor has no schedule on this day, please choose another day!",
+            "choose": "Choose ",
+            "book-free": " and book (free)",
+            "slot-full": "Full"
         },
-        "extra-infor-doctor":{
-             "text-address": "Address's Clinic",
-             "price": "Examination price",
-             "detail": "See details",
-             "hide": "Hide the price list",
-             "payment": "The patient can make payments using the following methods: "
-        } , "booking-modal":{
-            "title":"Medical Appointment Information",
+        "extra-infor-doctor": {
+            "text-address": "Address's Clinic",
+            "price": "Examination price",
+            "detail": "See details",
+            "hide": "Hide the price list",
+            "payment": "The patient can make payments using the following methods: "
+        },
+        "booking-modal": {
+            "title": "Medical Appointment Information",
             "fullName": "Full Name",
             "address": "Contact Address",
             "email": "Email Address",
@@ -116,12 +113,22 @@
             "gender": "Gender",
             "confirm": "Confirm",
             "cancel": "Cancel ",
-            "freeBooking":"Free Booking",
-            "priceBooking": "Price: "
+            "freeBooking": "Free Booking",
+            "priceBooking": "Price: ",
+            "required": "This field is required",
+            "invalid-email": "Invalid email",
+            "invalid-phone": "Invalid phone number",
+            "success": "Booked successfully! Please check your email to confirm.",
+            "success-no-email": "Booked successfully! Email is not configured, use the link below to confirm.",
+            "verify-now": "Confirm appointment now",
+            "error": "Booking failed, please try again!",
+            "duplicated": "You have already booked this time slot!",
+            "full": "This time slot is fully booked, please pick another!",
+            "note": "Your information is only used to confirm the appointment and is kept private."
         }
     },
-    "admin":{
-        "manage-doctor":{
+    "admin": {
+        "manage-doctor": {
             "title": "Add more details to the doctor's profile.",
             "select-doctor": "Select Doctor",
             "intro": "Introduction",
@@ -133,8 +140,211 @@
             "nameClinic": "Clinic's Name",
             "addressClinic": "Clinic's Address",
             "note": "Note",
-             "specialty": "Select specialty",
+            "specialty": "Select specialty",
             "clinic": "Select clinic"
         }
+    },
+    "nav": {
+        "specialty": "Specialties",
+        "clinic": "Facilities",
+        "doctor": "Doctors",
+        "handbook": "Handbook",
+        "my-bookings": "My bookings",
+        "login": "Log in",
+        "dashboard": "Dashboard",
+        "logout": "Log out",
+        "home": "Home"
+    },
+    "hero": {
+        "badge": "Fast & free appointment booking",
+        "title": "Book an appointment with top doctors",
+        "title-highlight": "in 1 minute",
+        "desc": "Hundreds of trusted doctors, specialties and medical facilities. Pick a time, get confirmation by email.",
+        "search-placeholder": "Search doctors, specialties, facilities...",
+        "search-empty": "No matching results",
+        "stat-doctors": "Doctors",
+        "stat-specialties": "Specialties",
+        "stat-clinics": "Facilities"
+    },
+    "search": {
+        "doctors": "Doctors",
+        "specialties": "Specialties",
+        "clinics": "Facilities",
+        "handbooks": "Handbook",
+        "searching": "Searching..."
+    },
+    "home": {
+        "specialty-sub": "Find doctors by the specialty you need",
+        "clinic-title": "Featured medical facilities",
+        "clinic-sub": "Trusted hospitals and clinics nationwide",
+        "doctor-sub": "Experienced doctors trusted by many patients",
+        "handbook-title": "Health handbook",
+        "handbook-sub": "Useful medical knowledge from our doctors",
+        "why-title": "Why BookingCare?",
+        "why-1-title": "Trusted doctors",
+        "why-1-desc": "Verified doctors and leading experts with transparent profiles.",
+        "why-2-title": "Book 24/7",
+        "why-2-desc": "Choose the date and time that suits you, no waiting in line.",
+        "why-3-title": "Email confirmation",
+        "why-3-desc": "Receive your appointment details and results by email.",
+        "why-4-title": "Free booking",
+        "why-4-desc": "No booking fee, pay directly at the facility.",
+        "steps-title": "Book an appointment in 3 steps",
+        "step-1": "Choose a doctor or specialty",
+        "step-2": "Pick a suitable date and time",
+        "step-3": "Fill in your details & confirm via email",
+        "press": "BookingCare in the media",
+        "view-all": "View all"
+    },
+    "footer": {
+        "about": "Online medical appointment platform connecting patients with trusted doctors and facilities.",
+        "links": "Explore",
+        "support": "Support",
+        "contact": "Contact",
+        "faq": "FAQ",
+        "policy": "Privacy policy",
+        "terms": "Terms of use",
+        "download": "Get the app",
+        "copyright": "All rights reserved by BookingCare Clone."
+    },
+    "list": {
+        "specialty-title": "Specialties",
+        "specialty-desc": "Medical specialties. Choose one to see doctors and book an appointment.",
+        "clinic-title": "Medical facilities",
+        "clinic-desc": "Trusted hospitals, clinics and laboratories.",
+        "doctor-title": "Doctors",
+        "doctor-desc": "Find doctors by name, specialty and location.",
+        "handbook-title": "Health handbook",
+        "handbook-desc": "Easy-to-read medical articles for you and your family.",
+        "search-placeholder": "Search by name...",
+        "all-specialty": "All specialties",
+        "all-province": "All locations",
+        "result": "results",
+        "empty": "No matching data",
+        "view-detail": "View details",
+        "book-now": "Book now"
+    },
+    "detail": {
+        "doctors-of-specialty": "Doctors in this specialty",
+        "doctors-of-clinic": "Doctors at this facility",
+        "no-doctor": "No doctors yet",
+        "introduce": "Introduction",
+        "read-more": "Read more",
+        "collapse": "Collapse",
+        "related-handbook": "Other articles",
+        "about-doctor": "About the doctor",
+        "faq-title": "Need more information?",
+        "faq-link": "See frequently asked questions"
+    },
+    "my-bookings": {
+        "title": "Find my bookings",
+        "desc": "Enter the email you used when booking to see the status of your appointments.",
+        "email": "Booking email",
+        "search": "Search",
+        "empty": "No appointments found for this email",
+        "doctor": "Doctor",
+        "time": "Time",
+        "status": "Status",
+        "note-S1": "Please check your email and click the link to confirm this appointment.",
+        "invalid-email": "Invalid email"
+    },
+    "verify": {
+        "loading": "Confirming your appointment...",
+        "success-title": "Appointment confirmed!",
+        "success-desc": "Your appointment has been confirmed. Please arrive on time and bring your ID.",
+        "fail-title": "Unable to confirm appointment",
+        "fail-desc": "The appointment does not exist or has already been confirmed.",
+        "back-home": "Back to home",
+        "view-bookings": "View my bookings"
+    },
+    "admin-layout": {
+        "view-site": "View website",
+        "logout": "Log out",
+        "welcome": "Hello"
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "subtitle": "System activity overview",
+        "doctors": "Doctors",
+        "patients": "Patients",
+        "specialties": "Specialties",
+        "clinics": "Facilities",
+        "handbooks": "Articles",
+        "bookings": "Bookings by status",
+        "quick-actions": "Quick actions",
+        "add-user": "Add user",
+        "add-doctor-info": "Update doctor profile",
+        "add-schedule": "Create schedule",
+        "add-handbook": "Write article"
+    },
+    "login": {
+        "title": "Sign in",
+        "subtitle": "For administrators and doctors",
+        "email": "Email",
+        "password": "Password",
+        "email-placeholder": "Enter your email",
+        "password-placeholder": "Enter your password",
+        "submit": "Log in",
+        "back-home": "Back to home",
+        "empty": "Please enter email and password",
+        "patient-not-allowed": "Patient accounts cannot access the dashboard",
+        "side-title": "Manage your clinic with ease",
+        "side-desc": "Manage schedules, patients, specialties and facilities on one platform."
+    },
+    "manage": {
+        "list": "List",
+        "add-new": "Add new",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Save",
+        "update": "Update",
+        "cancel": "Cancel",
+        "confirm-delete": "Are you sure you want to delete this item?",
+        "name": "Name",
+        "address": "Address",
+        "image": "Image",
+        "title": "Title",
+        "description": "Short description",
+        "content": "Content",
+        "choose-image": "Choose image",
+        "required": "Please fill in all fields and choose an image",
+        "saved": "Saved successfully!",
+        "deleted": "Deleted!",
+        "error": "Something went wrong, please try again",
+        "empty": "No data yet",
+        "specialty-title": "Manage specialties",
+        "clinic-title": "Manage clinics",
+        "handbook-title": "Manage handbook",
+        "editing": "Editing",
+        "actions": "Actions",
+        "view": "View"
+    },
+    "manage-patient": {
+        "title": "Manage patients",
+        "date": "Date",
+        "status": "Status",
+        "all": "All",
+        "time": "Time",
+        "name": "Full name",
+        "phone": "Phone",
+        "address": "Address",
+        "gender": "Gender",
+        "actions": "Actions",
+        "confirm": "Send result",
+        "cancel": "Cancel",
+        "confirm-cancel": "Cancel this appointment?",
+        "cancelled": "Appointment cancelled",
+        "empty": "No patients on this day",
+        "send-success": "Result sent",
+        "send-error": "Failed to send result"
+    },
+    "remedy": {
+        "title": "Send examination result",
+        "patient": "Patient",
+        "email": "Patient email",
+        "file": "Invoice / prescription (image)",
+        "send": "Send",
+        "cancel": "Cancel",
+        "hint": "The appointment will be marked as \"Done\"."
     }
 }

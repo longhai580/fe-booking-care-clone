@@ -1,11 +1,15 @@
-.modal-header{
-    .btn-close-modal{
-        outline: none;
-        border: none;
-        background-color: white !important;
+.remedy-modal {
+    .remedy-preview {
+        margin-top: 10px;
+        max-height: 160px;
+        border-radius: var(--bc-radius-sm);
+        border: 1px solid var(--bc-border);
     }
-}
-.modal .modal-dialog .modal-content .modal-header {
-    background-color: white;
-    color: black;
+    .remedy-hint {
+        font-size: 13px;
+        color: var(--bc-text-muted);
+        i {
+            color: var(--bc-primary);
+        }
+    }
 }

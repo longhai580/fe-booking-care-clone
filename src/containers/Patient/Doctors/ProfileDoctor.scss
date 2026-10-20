@@ -1,42 +1,69 @@
-.profile-doctor-container{
-    .view-detail-doctor{
-        text-decoration: none;
-        .view-detail-link{
-            text-decoration: none;
-            color: #46c2d1;
-
+.profile-doctor-container {
+    .profile-intro {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        .bc-avatar {
+            width: 84px;
+            height: 84px;
         }
     }
-    .intro-doctor{
-        display: flex;
-    
-        .content-left{
-            width   : 20%;
-            border:  1px solid #46c2d2;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center ;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            &.img-doctor{
-                min-width: 80px;
-            }
-            
+    .profile-content {
+        flex: 1;
+        min-width: 0;
+    }
+    .profile-name {
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+    .profile-desc {
+        margin-top: 6px;
+        color: var(--bc-text-muted);
+        font-size: 14px;
+        line-height: 1.6;
+        white-space: pre-line;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .profile-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        i {
+            font-size: 11px;
         }
-        .content-right{
-            padding-left: 10px;
-            width: calc(100% - 80px);
-            display: flex;
-            flex-direction: column;
-            .up{
-                font-weight: 600;
-            }
-            .down{
-                text-align: justify;
+    }
+    .profile-time {
+        margin-top: 8px;
+        font-size: 14px;
+        .profile-time-main {
+            font-weight: 600;
+            color: var(--bc-primary-dark);
+            i {
+                margin-right: 4px;
             }
         }
-       
+        .profile-free {
+            margin-top: 4px;
+            color: var(--bc-success);
+            font-size: 13px;
+        }
+    }
+    .profile-price {
+        margin-top: 14px;
+        padding: 10px 14px;
+        background: var(--bc-bg-soft);
+        border-radius: var(--bc-radius-sm);
+        font-size: 14px;
+        strong {
+            margin-left: 4px;
+            color: var(--bc-primary-dark);
+        }
     }
 }
-

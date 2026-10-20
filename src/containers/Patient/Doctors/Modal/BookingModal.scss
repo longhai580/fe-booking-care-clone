@@ -1,53 +1,75 @@
-.booking-modal-container{
-    .booking-modal-content{
+.booking-modal-container {
+    .booking-modal-header {
         display: flex;
-        flex-direction: column;
-
-        .booking-modal-header{
-            padding: 10px;
-            border-bottom:  1px solid #ccc;            
-            
-            .right{
-                float: right;
-                cursor: pointer;
-                &:hover{
-                    color: #47c3d2;
-                    opacity: 0.5;
-                }
-            }
-            .left{
-                font-size: 15px;
-                font-weight: 600;
-                color: #333;
-            }
-
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 24px;
+        border-bottom: 1px solid var(--bc-border);
+        h5 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 700;
         }
-        .booking-modal-body{
-            height: 100%;
-            padding: 15px;
-        }
-        .booking-modal-footer{
-           padding: 10px;
-           border-top: 1px solid #ccc;
-           display: flex;
-           justify-content: flex-end ;
-           gap: 15px;
-           button{
+        .btn-close-modal {
             border: none;
-            outline: none;
-            border-radius: 6px;
-            padding: 5px 8px;
-            color: #fff;
-            min-width: 80px;
-
-           }
-           .btn-booking-confirm{
-                background-color: #2dc66d;
-           }
-           .btn-booking-cancel{
-                background-color: #f72928;
-                color: #fff;
+            background: transparent;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            color: var(--bc-text-muted);
+            cursor: pointer;
+            &:hover {
+                background: var(--bc-bg-soft);
+                color: var(--bc-text);
             }
+        }
+    }
+    .booking-modal-body {
+        padding: 20px 24px 8px;
+        .doctor-infor {
+            padding-bottom: 18px;
+            margin-bottom: 18px;
+            border-bottom: 1px dashed var(--bc-border);
+        }
+        .booking-note {
+            font-size: 12px;
+            color: var(--bc-text-muted);
+            margin-bottom: 8px;
+            i {
+                margin-right: 4px;
+                color: var(--bc-primary);
+            }
+        }
+        .flatpickr-input {
+            height: 44px;
+        }
+    }
+    .booking-modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 14px 24px 20px;
+    }
+    .booking-success {
+        text-align: center;
+        padding: 12px 0 24px;
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--bc-success-soft);
+            color: var(--bc-success);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            margin-bottom: 12px;
+        }
+        p {
+            max-width: 460px;
+            margin: 0 auto 16px;
+            color: var(--bc-text-muted);
+            line-height: 1.6;
         }
     }
 }

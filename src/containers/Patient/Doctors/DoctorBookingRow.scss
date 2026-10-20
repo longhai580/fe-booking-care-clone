@@ -1,0 +1,25 @@
+.doctor-booking-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 24px;
+    padding: 22px;
+    .dbr-left {
+        border-right: 1px solid var(--bc-border);
+        padding-right: 24px;
+    }
+    .dbr-extra {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--bc-border);
+    }
+    @media (max-width: 860px) {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 18px;
+        .dbr-left {
+            border-right: none;
+            padding-right: 0;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--bc-border);
+        }
+    }
+}

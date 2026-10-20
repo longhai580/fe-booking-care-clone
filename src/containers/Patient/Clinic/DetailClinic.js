@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { LANGUAGES } from '../../../utils';
-import './DetailClinic.scss';
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import HomeHeader from '../../HomePage/HomeHeader'
-import DoctorSchedule from '../Doctors/DoctorSchedule';
-import DoctorExtraInfor from '../Doctors/DoctorExtraInfor';
-import ProfileDoctor from '../Doctors/ProfileDoctor';
-import {getAllDetailClinicById, getAllCodeService} from '../../../services/userService'
-import _ from 'lodash';
-
-
-
-
-
+import { getAllDetailClinicById } from '../../../services/userService'
+import PageLayout from '../../../components/Common/PageLayout';
+import DoctorBookingRow from '../Doctors/DoctorBookingRow';
+import CollapsibleContent from '../Specialty/CollapsibleContent';
+import '../Specialty/DetailSpecialty.scss';
+import './DetailClinic.scss';
 
 class DetailClinic extends Component {
     constructor(props) {
@@ -21,110 +15,88 @@ class DetailClinic extends Component {
         this.state = {
             arrDoctorId: [],
             dataDetailClinic: {},
+            isLoading: true,
         }
     }
-    async componentDidMount() {
-        if (this.props.match && this.props.match.params && this.props.match.params.id) {
-            let id = this.props.match.params.id;
-         
-            let res = await getAllDetailClinicById({
-                id: id,
-            });
-            if (res && res.errCode === 0 ) { 
-                let data = res.data;
-                let arrDoctorId = [];
-                if (data && !_.isEmpty(res.data)) {
-                    let arr = data.doctorClinic;
-                    if (arr && arr.length > 0) { 
-                        arr.map(item => {
-                            arrDoctorId.push(item.doctorId)
-                        })
-                    }
-                }
-                
-                this.setState({
-                    dataDetailClinic: res.data,
-                    arrDoctorId: arrDoctorId,
-                })
-            }
-            
+
+    componentDidMount() {
+        this.loadData();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+            this.loadData();
         }
     }
-    async componentDidUpdate(prevProps, prevState, snapshot ) {
-        if (this.props.language === prevProps.language) {
-            
+
+    loadData = async () => {
+        let id = this.props.match.params.id;
+        this.setState({ isLoading: true });
+        let res = await getAllDetailClinicById({ id: id });
+        if (res && res.errCode === 0) {
+            let data = res.data || {};
+            this.setState({
+                dataDetailClinic: data,
+                arrDoctorId: (data.doctorClinic || []).map(item => item.doctorId),
+                isLoading: false,
+            })
+        } else {
+            this.setState({ isLoading: false });
         }
     }
-  
-   
+
     render() {
-        let { arrDoctorId, dataDetailClinic, } = this.state;
-        console.log('check state clinic data from node js ', this.state)
-        let {language} = this.props;
-        return (
-            <div className="detail-specialty-container">
-                <HomeHeader />
-                <div className="detail-specialty-body">
-
-                
-                    <div className="des-specialty">
-                        {dataDetailClinic && !_.isEmpty(dataDetailClinic)
-                            &&                     
-                            <div dangerouslySetInnerHTML={{ __html: dataDetailClinic.descriptionHTML }}></div>
-                        }       
+        let { arrDoctorId, dataDetailClinic, isLoading } = this.state;
+        let hero = (
+            <div className="bc-page-hero clinic-hero">
+                <div className="bc-container clinic-hero-inner">
+                    {dataDetailClinic.image && (
+                        <div className="clinic-logo" style={{ backgroundImage: `url(${dataDetailClinic.image})` }}></div>
+                    )}
+                    <div>
+                        <div className="bc-breadcrumb">
+                            <Link to="/home"><FormattedMessage id="nav.home" /></Link>
+                            <span>/</span>
+                            <Link to="/clinics"><FormattedMessage id="nav.clinic" /></Link>
+                        </div>
+                        <h1>{dataDetailClinic.name || '...'}</h1>
+                        {dataDetailClinic.address && <p><i className="fas fa-map-marker-alt"></i> {dataDetailClinic.address}</p>}
                     </div>
-            
-                    {arrDoctorId && arrDoctorId.length > 0 &&
-                    
-                    arrDoctorId.map((item, index) => { 
-                        return (
-                            <div className="each-doctor"   key={index}>
-                                <div className="dt-content-left">
-                                    <div className="profile-doctor">
-                                        <ProfileDoctor
-                                            doctorId={item}
-                                            isShowDescriptionDoctor = {true}
-                                            isShowLinkDetail ={true}
-                                            isShowPrice = {false}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="dt-content-right">
-                                    <div className="doctor-schedule">
-                                        <DoctorSchedule
-                                        doctorIdFromParent={item} />
-                                    </div>
-                                    <div className="doctor-extra-infor">
-                                        <DoctorExtraInfor 
-                                        doctorIdFromParent = {item}/>
-                                    </div>
-                                    
-                                
-
-                                </div>
-                            </div>
-                            
-                        )
-                    })
-                    }
-                
-                
                 </div>
             </div>
+        );
+        return (
+            <PageLayout hero={hero}>
+                <div className="bc-container detail-specialty-body">
+                    {dataDetailClinic.descriptionHTML && (
+                        <div className="bc-card des-specialty">
+                            <CollapsibleContent html={dataDetailClinic.descriptionHTML} />
+                        </div>
+                    )}
+
+                    <div className="doctors-head">
+                        <h2><FormattedMessage id="detail.doctors-of-clinic" /> <span className="count">({arrDoctorId.length})</span></h2>
+                    </div>
+
+                    {isLoading ? (
+                        <div className="bc-skeleton" style={{ height: 220 }}></div>
+                    ) : arrDoctorId.length === 0 ? (
+                        <div className="bc-card bc-empty"><i className="fas fa-user-md"></i><FormattedMessage id="detail.no-doctor" /></div>
+                    ) : (
+                        <div className="doctor-rows">
+                            {arrDoctorId.map(item => <DoctorBookingRow key={item} doctorId={item} />)}
+                        </div>
+                    )}
+                </div>
+            </PageLayout>
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language, 
-
+        language: state.app.language,
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailClinic);
+export default connect(mapStateToProps)(DetailClinic);

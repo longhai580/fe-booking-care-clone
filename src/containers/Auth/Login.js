@@ -1,120 +1,104 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { push } from "connected-react-router";
-
-// import * as actions from "../store/actions";
+import { FormattedMessage, injectIntl } from 'react-intl';
 import * as actions from "../../store/actions";
-
-import './Login.scss';
-import { FormattedMessage } from 'react-intl';
 import { handleLoginApi } from '../../services/userService';
+import { USER_ROLE } from '../../utils';
+import logo from '../../assets/images/logo.png';
+import './Login.scss';
 
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state= {
-            username: ' ',
+        this.state = {
+            username: '',
             password: '',
             isShowPassword: false,
-            errMessage: ''
+            errMessage: '',
+            isLoading: false,
         }
     }
-    handleOnChangeUsername= (event) =>{
-        console.log(event.target.value)
-        this.setState({username: event.target.value})
-    }
-    handleOnChangePassword= (event) =>{
-        this.setState({password: event.target.value})
-    }
-    handleLogin = async() =>{
 
-        this.setState({
-            errMessage: ''
-        })
-        try{
-            let data = await handleLoginApi(this.state.username, this.state.password);
-            if(data && data.errCode !==0){
-                this.setState({
-                    errMessage: data.message
-                })
+    handleLogin = async (event) => {
+        if (event) event.preventDefault();
+        let { username, password } = this.state;
+        let { intl } = this.props;
+        if (!username.trim() || !password) {
+            this.setState({ errMessage: intl.formatMessage({ id: 'login.empty' }) });
+            return;
+        }
+        this.setState({ errMessage: '', isLoading: true });
+        try {
+            let data = await handleLoginApi(username.trim(), password);
+            if (data && data.errCode !== 0) {
+                this.setState({ errMessage: data.message, isLoading: false });
             }
-            if(data && data.errCode ===0){
-                this.props.userLoginSuccess(data.user)
-                console.log('Login successful')
-            }
-        }catch(error){
-            if(error.response){
-                if(error.response.data){
-                    this.setState({
-                        errMessage: error.response.data.message
-                    })
+            if (data && data.errCode === 0) {
+                if (data.user.roleId === USER_ROLE.PATIENT) {
+                    this.setState({ errMessage: intl.formatMessage({ id: 'login.patient-not-allowed' }), isLoading: false });
+                    return;
                 }
+                this.props.userLoginSuccess(data.user)
             }
+        } catch (error) {
+            let message = error.response && error.response.data && error.response.data.message
+                ? error.response.data.message
+                : intl.formatMessage({ id: 'manage.error' });
+            this.setState({ errMessage: message, isLoading: false });
+        }
+    }
 
-        }
-    }
-    handleShowHidePassword = ()=>{
-        this.setState({
-            isShowPassword:!this.state.isShowPassword
-        })
-    }
-    handleOnKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            this.handleLogin();
-        }
-    }
     render() {
-       
-
+        let { username, password, isShowPassword, errMessage, isLoading } = this.state;
+        let { intl } = this.props;
         return (
-        <div className="login-background"> 
-            <div className='login-container'>
-                <div className='login-content row'>
-                    <div className="col-12 text-login">Login</div>
-                    <div className="col-12 form-group login-input">
-                        <label>Username:</label>
-                        <input type="text" className="form-control"
-                         placeholder='Enter your username'
-                         value={this.state.username}
-                         onChange={(event)=>{this.handleOnChangeUsername(event) }}
-                         />
-                    </div>
-                    <div className="col-12 form-group login-input">
-                        <label>Password:</label>
-                        <div className="custom-input-password">
-                                <input type={this.state.isShowPassword ? 'text' : 'password'} className="form-control"
-                                    placeholder='Enter your password'
-                                    value={this.state.password}
-                                    onChange={(event) => { this.handleOnChangePassword(event) }}
-                                    onKeyDown={(event) => { this.handleOnKeyDown(event) }}
-                            />
-                            <span
-                            onClick={() =>{this.handleShowHidePassword()}}
-                            >                              
-                             <i className={this.state.isShowPassword ? 'far fa-eye' : 'far fa-eye-slash' }></i>
-                            </span>
-                        </div>
-                       
-                    </div>
-                    <div className='col-12' style = {{color: 'red'}}>
-                        {this.state.errMessage}
-                    </div>
-                    <div className='col-12'>
-                        <button className="btn-login" onClick = {()=>{this.handleLogin()}}>Login</button>
-                    </div>
-                    <div className='col-12'>
-                        <span className="forgot-password">Forgot your pass word</span>
-                    </div>
-                    <div className='col-12 text-center'>
-                        <span className="text-other-login">Or Login with:  </span>
-                    </div>
-                    <div className='col-12 social-login '>
-                    <i className="fab fa-google-plus-g google"></i>
-                    <i className="fab fa-facebook-f facebook"></i>
+            <div className="login-page">
+                <div className="login-side">
+                    <Link to="/home" className="login-logo"><img src={logo} alt="BookingCare" /></Link>
+                    <div className="login-side-content">
+                        <h2><FormattedMessage id="login.side-title" /></h2>
+                        <p><FormattedMessage id="login.side-desc" /></p>
                     </div>
                 </div>
+                <div className="login-main">
+                    <form className="login-form" onSubmit={this.handleLogin} noValidate>
+                        <Link to="/home" className="login-back"><i className="fas fa-arrow-left"></i> <FormattedMessage id="login.back-home" /></Link>
+                        <h1><FormattedMessage id="login.title" /></h1>
+                        <p className="login-subtitle"><FormattedMessage id="login.subtitle" /></p>
+
+                        <div className="bc-field">
+                            <label htmlFor="login-email"><FormattedMessage id="login.email" /></label>
+                            <input id="login-email" type="email" className="bc-input" autoComplete="username"
+                                placeholder={intl.formatMessage({ id: 'login.email-placeholder' })}
+                                value={username}
+                                onChange={(event) => this.setState({ username: event.target.value, errMessage: '' })} />
+                        </div>
+                        <div className="bc-field">
+                            <label htmlFor="login-password"><FormattedMessage id="login.password" /></label>
+                            <div className="password-wrap">
+                                <input id="login-password" type={isShowPassword ? 'text' : 'password'} className="bc-input"
+                                    autoComplete="current-password"
+                                    placeholder={intl.formatMessage({ id: 'login.password-placeholder' })}
+                                    value={password}
+                                    onChange={(event) => this.setState({ password: event.target.value, errMessage: '' })} />
+                                <button type="button" className="toggle-password" aria-label="Show password"
+                                    onClick={() => this.setState({ isShowPassword: !isShowPassword })}>
+                                    <i className={isShowPassword ? 'far fa-eye' : 'far fa-eye-slash'}></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        {errMessage && <div className="login-error"><i className="fas fa-exclamation-circle"></i> {errMessage}</div>}
+
+                        <button type="submit" className="bc-btn bc-btn-lg login-submit" disabled={isLoading}>
+                            {isLoading && <span className="spinner-border spinner-border-sm"></span>}
+                            <FormattedMessage id="login.submit" />
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
         )
     }
 }
@@ -128,10 +112,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        // userLoginFail: () => dispatch(actions.adminLoginFail()),
         userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo))
-    
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(injectIntl(Login));

@@ -112,7 +112,7 @@ class UserManage extends Component {
     render() {
         let arrUsers = this.state.arrUsers;
       return (
-        <div className='user-container mt-5 mx-5'>
+        <div className='users-container'>
           <ModalUser
             isOpen={this.state.isOpenModalUser}
             toggleFromParent={this.toggleUserModal}
@@ -129,12 +129,12 @@ class UserManage extends Component {
 
           />
           }
-            <div className="title text-center">Manage users</div>
-            <div clasName="mx-1">
+            <div className="title"><FormattedMessage id="menu.admin.crud" /></div>
+            <div>
               <button
                 className="btn btn-primary px-3"
                 onClick= {()=>{this.handleAddNewUser()}}
-              ><i className="fas fa-plus"></i> Add new user</button>
+              ><i className="fas fa-plus"></i> <FormattedMessage id="manage-user.add" /></button>
             </div>
             <div className='user-table'>
             <table id="customers">
@@ -151,7 +151,7 @@ class UserManage extends Component {
                 {
                   arrUsers && arrUsers.map((item, index) => {
                     return (
-                      <tr>
+                      <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.email}</td>
                         <td>{item.firstName}</td>

@@ -1,10 +1,44 @@
-.verify-email-container{
-    .infor-booking{
-        font-size: 17px;
-        font-weight: 600;
-        margin-top: 30px;
+.verify-email-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 24px;
+    .verify-card {
+        max-width: 520px;
+        width: 100%;
         text-align: center;
-        color: red ;
-        text-transform: uppercase;
-    } 
+        padding: 40px 32px;
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 18px 0 8px;
+        }
+        p {
+            color: var(--bc-text-muted);
+            line-height: 1.6;
+        }
+    }
+    .verify-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        &.success {
+            background: var(--bc-success-soft);
+            color: var(--bc-success);
+        }
+        &.fail {
+            background: var(--bc-warning-soft);
+            color: var(--bc-warning);
+        }
+    }
+    .verify-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
 }

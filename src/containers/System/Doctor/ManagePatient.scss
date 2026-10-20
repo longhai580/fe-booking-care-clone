@@ -1,18 +1,14 @@
-div._loading_overlay_wrapper{
-    position: unset !important;
-    ._loading_overlay_overlay{
-        z-index: 100000;
+.manage-patient-container {
+    .mp-filters {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+        .bc-field {
+            width: 220px;
+        }
     }
-}
-.manage-patient-container{
-    .m-p-title{
-        font-size: 15px;
-        text-align: center;
-        margin: 10px 0;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-    .manage-patient-body{
-        padding: 0 20px;
+    .bc-empty i {
+        font-size: 28px;
     }
 }

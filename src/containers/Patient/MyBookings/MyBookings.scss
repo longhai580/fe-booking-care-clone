@@ -1,0 +1,81 @@
+.my-bookings {
+    max-width: 760px;
+    .lookup-form {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        padding: 20px;
+        margin-bottom: 24px;
+        .bc-field {
+            flex: 1;
+            margin: 0;
+        }
+        .bc-btn {
+            height: 44px;
+        }
+        @media (max-width: 520px) {
+            flex-direction: column;
+            align-items: stretch;
+        }
+    }
+    .booking-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .booking-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        .booking-date {
+            flex-shrink: 0;
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            background: var(--bc-primary-soft);
+            color: var(--bc-primary-dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .day {
+                font-size: 22px;
+                font-weight: 800;
+                line-height: 1;
+            }
+            .month {
+                font-size: 11px;
+                margin-top: 4px;
+            }
+        }
+        .booking-main {
+            flex: 1;
+            min-width: 0;
+        }
+        .booking-doctor {
+            font-weight: 700;
+            color: var(--bc-text);
+            &:hover {
+                color: var(--bc-primary);
+            }
+        }
+        .booking-time {
+            color: var(--bc-text-muted);
+            font-size: 14px;
+            margin-top: 4px;
+            text-transform: capitalize;
+        }
+        .booking-note {
+            font-size: 13px;
+            color: var(--bc-warning);
+            margin-top: 6px;
+        }
+        @media (max-width: 520px) {
+            flex-wrap: wrap;
+            .bc-badge {
+                margin-left: 80px;
+            }
+        }
+    }
+}

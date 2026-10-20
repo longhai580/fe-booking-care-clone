@@ -4,7 +4,7 @@ import './ManageSchedule.scss';
 import { FormattedMessage } from 'react-intl';
 import Select from 'react-select';
 import * as actions from '../../../store/actions';
-import { LANGUAGES, CRUD_ACTIONS, dateFormat } from '../../../utils';
+import { LANGUAGES, USER_ROLE } from '../../../utils';
 import DatePicker from '../../../components/Input/DatePicker';
 import moment from 'moment';
 import  FormattedDate  from '../../../components/Formating/FormattedDate';
@@ -34,8 +34,12 @@ class ManageSchedule extends Component {
     componentDidUpdate( prevProps, prevState, snapshot ) {
         if (prevProps.allDoctors !== this.props.allDoctors) {
             let dataSelect = this.buildInputDataSelect(this.props.allDoctors)
+            let { userInfo } = this.props;
+            // a doctor can only manage their own schedule
+            let ownOption = this.isDoctor() ? dataSelect.find(item => item.value === userInfo.id) : null;
             this.setState({
-                listDoctors: dataSelect
+                listDoctors: dataSelect,
+                ...(ownOption ? { selectedDoctor: ownOption } : {})
             })
         }
         if (prevProps.allScheduleTime !== this.props.allScheduleTime) {
@@ -59,6 +63,11 @@ class ManageSchedule extends Component {
         //     })
         // }
     }
+    isDoctor = () => {
+        let { userInfo } = this.props;
+        return !!userInfo && userInfo.roleId === USER_ROLE.DOCTOR;
+    }
+
     buildInputDataSelect = (inputData) => {
         let results = [];
        
@@ -135,6 +144,7 @@ class ManageSchedule extends Component {
         })
         if (res && res.errCode === 0) {
             toast.success("Save Infor Success!");
+            this.setState({ rangeTime: rangeTime.map(item => ({ ...item, isSelected: false })) });
 
         } else {
             toast.error("Error when save schedule!");
@@ -151,17 +161,18 @@ class ManageSchedule extends Component {
                 <div className="m-s-title">
                     <FormattedMessage id= "manage-schedule.title" />
                 </div> 
-                <div className="container">
+                <div>
                     <div className="row">
-                        <div className='col-6 form-group' >
+                        <div className='col-md-6 form-group mb-3' >
                             <label><FormattedMessage id= "manage-schedule.choose-doctor" /></label>
                             <Select
                         value={this.state.selectedDoctor}
                         onChange={this.handleChangeSelect}
                         options={this.state.listDoctors}
+                        isDisabled={this.isDoctor()}
                     />
                         </div>
-                        <div className='col-6 form-group '>
+                        <div className='col-md-6 form-group mb-3'>
                         <label><FormattedMessage id= "manage-schedule.choose-date" /></label>
                             <DatePicker
                                 onChange={this.handleOnChangeDataPicker}
@@ -203,6 +214,7 @@ class ManageSchedule extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
         allDoctors: state.admin.allDoctors,
         language: state.app.language, 
         allScheduleTime: state.admin.allScheduleTime

@@ -1,68 +1,71 @@
-.doctor-extra-infor-container{
-    padding-left: 15px;
-    .dc-content-up{
-        .address-clinic{
-            text-transform: uppercase;
-            color: #666666;
-            font-weight: 500;
+.doctor-extra-infor-container {
+    .extra-block {
+        padding: 14px 0;
+        & + .extra-block {
+            border-top: 1px solid var(--bc-border);
         }
-        .name-clinic{
-            font-weight: 600;
-            padding: 5px 0;
-
-        }
-        .detail-address{
-            font-weight: 600;
-
-
+        &:first-child {
+            padding-top: 0;
         }
     }
-    .dc-content-down{
-        .title-price-show{
-            border-bottom: 1px solid #ccc;
-            min-width: 500px;
-            .show-price{
-                margin-left: 10px;
-                cursor: pointer;
-                color: #47c3d2;
-
-            }
-            .currency{
-                margin: 0 5px;
-            }
+    .extra-label {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        color: var(--bc-text-muted);
+        i {
+            color: var(--bc-primary);
+            margin-right: 4px;
         }
-        .title-price{
-            color:#666666;
-            font-weight: 500;
-            margin-bottom: 10px ;
+    }
+    .extra-clinic {
+        font-weight: 600;
+        margin-top: 8px;
+    }
+    .extra-address {
+        color: var(--bc-text-muted);
+        font-size: 14px;
+        margin-top: 2px;
+    }
+    .extra-price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+    }
+    .extra-price {
+        font-weight: 700;
+        color: var(--bc-primary-dark);
+        font-size: 16px;
+    }
+    .extra-detail {
+        margin-top: 10px;
+        padding: 12px;
+        background: var(--bc-bg-soft);
+        border-radius: var(--bc-radius-sm);
+        font-size: 14px;
+        line-height: 1.6;
+        .extra-note {
+            margin-bottom: 6px;
         }
-        .detail-infor{
-            background-color: #F8F8F8;
-            border: 1px solid #DDD;
-            padding: 5px 5px;
-
-            .price{
-                color:#666666;
-                .right{
-                    float: right;
-                }
-            }
-            .note{
-
-            }
+        strong {
+            margin-left: 4px;
         }
-        .payment{
-            padding: 5px 5px;
-
-            background-color: #EEEEEE;
-
-        }
-        .hide-price{
-            margin-top: 10px;
-            span{
-                cursor: pointer;
-                color: #47c3d2;
-            }
+    }
+    .extra-toggle {
+        margin-top: 8px;
+        border: none;
+        background: transparent;
+        padding: 0;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--bc-primary);
+        cursor: pointer;
+        i {
+            margin-left: 6px;
+            font-size: 11px;
         }
     }
 }

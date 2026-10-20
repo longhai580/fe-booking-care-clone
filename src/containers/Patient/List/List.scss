@@ -1,0 +1,102 @@
+.list-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    .list-search {
+        position: relative;
+        flex: 1 1 280px;
+        max-width: 420px;
+        i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--bc-text-muted);
+        }
+        .bc-input {
+            padding-left: 40px;
+        }
+    }
+    .bc-select {
+        flex: 0 1 220px;
+    }
+    .list-total {
+        margin-left: auto;
+        color: var(--bc-text-muted);
+        font-size: 14px;
+    }
+}
+
+.doctor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.doctor-row {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: flex-start;
+    .doctor-row-main {
+        flex: 1;
+        min-width: 0;
+    }
+    .doctor-row-name {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--bc-text);
+        &:hover {
+            color: var(--bc-primary);
+        }
+    }
+    .doctor-row-desc {
+        color: var(--bc-text-muted);
+        margin: 6px 0 10px;
+        line-height: 1.6;
+        white-space: pre-line;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .doctor-row-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        font-size: 13px;
+        color: var(--bc-text);
+        i {
+            color: var(--bc-primary);
+            margin-right: 6px;
+        }
+    }
+    .doctor-row-action {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+        flex-shrink: 0;
+        .price {
+            font-weight: 700;
+            color: var(--bc-primary-dark);
+        }
+    }
+    @media (max-width: 680px) {
+        flex-wrap: wrap;
+        .bc-avatar {
+            width: 72px;
+            height: 72px;
+        }
+        .doctor-row-main {
+            flex: 1 1 calc(100% - 92px);
+        }
+        .doctor-row-action {
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
